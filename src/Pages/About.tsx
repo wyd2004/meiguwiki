@@ -12,6 +12,7 @@ import {
   View,
   ViewStyle
 } from 'react-native'
+import EntypoIcon from 'react-native-vector-icons/Entypo'
 import FAIcon from 'react-native-vector-icons/FontAwesome'
 import IoniconsIcon from 'react-native-vector-icons/Ionicons'
 import { NavigationScreenConfig, NavigationTabScreenOptions } from 'react-navigation'
@@ -79,7 +80,7 @@ class ListCell extends React.Component<ILink> {
     return (
       <TouchableOpacity style={styles.listItemContainer} onPress={this.onPress}>
         <Text style={styles.listItemText}>{this.props.title}</Text>
-        <IoniconsIcon name="ios-arrow-forward" size={20} color={colors.listArrowColor} />
+        <EntypoIcon name="chevron-thin-right" size={20} color={colors.listArrowColor} />
       </TouchableOpacity>
     )
   }

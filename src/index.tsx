@@ -1,3 +1,4 @@
+import axios from 'axios'
 import * as React from 'react'
 import {
   AppRegistry,
@@ -6,6 +7,8 @@ import {
   View
 } from 'react-native'
 import { RootStackNavigator } from './route'
+
+axios.defaults.baseURL = 'http://198.13.52.6/mg/api/v1.0'
 
 export class App extends React.Component {
   render () {

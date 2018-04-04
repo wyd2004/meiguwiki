@@ -5,6 +5,7 @@
     "noEmit": true,
     "moduleResolution": "node",
     "importHelpers": true,
+    "experimentalDecorators": true,
     "plugins": [
       {
         "name": "tslint-language-service",

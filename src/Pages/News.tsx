@@ -1,19 +1,28 @@
 import * as React from 'react'
-import { SafeAreaView, StyleSheet, Text, ViewStyle } from 'react-native'
+import { Button, SafeAreaView, StyleSheet, ViewStyle } from 'react-native'
 import FAIcon from 'react-native-vector-icons/FontAwesome'
-import { NavigationScreenConfig, NavigationTabScreenOptions, TabBarTop, TabNavigator } from 'react-navigation'
+import {
+  NavigationScreenConfig,
+  NavigationScreenProps,
+  NavigationTabScreenOptions,
+  TabBarTop,
+  TabNavigator
+} from 'react-navigation'
 import * as colors from '../colors'
 
 function createNewsList (fid: number, forumName: string) {
-  return class NewsList extends React.Component {
+  return class NewsList extends React.Component<NavigationScreenProps> {
     static navigationOptions: NavigationScreenConfig<NavigationTabScreenOptions> = {
-      tabBarLabel: () => {
-        return forumName
-      }
+      title: forumName
+    }
+    openArticle = () => {
+      this.props.navigation.push('Article', {
+        tid: 6216
+      })
     }
     render () {
       return (
-        <Text>{forumName} {fid}</Text>
+        <Button title="文章页" color="#57bae8" onPress={this.openArticle} />
       )
     }
   }
@@ -64,17 +73,19 @@ const styles = StyleSheet.create({
   } as ViewStyle
 })
 
-export class News extends React.Component {
+export class News extends React.Component<NavigationScreenProps> {
   static navigationOptions: NavigationScreenConfig<NavigationTabScreenOptions> = {
     tabBarLabel: '资讯',
     tabBarIcon ({ focused, tintColor }) {
       return <FAIcon name="newspaper-o" size={20} color={tintColor} />
     }
   }
+  // https://github.com/react-navigation/react-navigation/issues/3598#issuecomment-375622188
+  static router = TopTabNavigator.router
   render () {
     return (
       <SafeAreaView style={styles.tabContainer}>
-        <TopTabNavigator />
+        <TopTabNavigator navigation={this.props.navigation} />
       </SafeAreaView>
     )
   }

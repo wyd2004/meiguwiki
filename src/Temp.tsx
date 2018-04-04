@@ -1,5 +1,6 @@
 import * as React from 'react'
 import {
+  Button,
   Platform,
   StyleSheet,
   Text,
@@ -36,12 +37,21 @@ const styles = StyleSheet.create({
 let counter = 0
 
 export class Temp extends React.Component<NavigationInjectedProps> {
+  static navigationOptions = {
+    title: 'Temp'
+  }
   componentWillMount () {
     counter++
+  }
+  openArticle = () => {
+    this.props.navigation.navigate('Article', {
+      tid: 4109
+    })
   }
   render () {
     return (
       <View style={styles.container}>
+        <Button title="文章页" color="#57bae8" onPress={this.openArticle} />
         <Text style={styles.welcome}>
           Welcome to React Native! {counter}
         </Text>

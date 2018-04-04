@@ -1,7 +1,8 @@
 import { StackNavigator, TabNavigator } from 'react-navigation'
-import { bottomTabActiveTintColor, bottomTabInactiveTintColor } from './colors'
-import { About } from './Pages/About'
-import { News } from './Pages/News'
+import { bottomTabActiveTintColor, bottomTabInactiveTintColor, topBarBgColor } from './colors'
+import { About } from './pages/About'
+import { Article } from './pages/Article'
+import { News } from './pages/News'
 import { Temp } from './Temp'
 
 // tslint:disable-next-line:variable-name
@@ -37,9 +38,16 @@ export const RootStackNavigator = StackNavigator({
     }
   },
   Article: {
-    screen: Temp,
+    screen: Article,
     path: 'article/:tid'
   }
 }, {
-  initialRouteName: 'Hub'
+  initialRouteName: 'Hub',
+  navigationOptions: {
+    headerTruncatedBackTitle: '返回',
+    headerStyle: {
+      backgroundColor: topBarBgColor
+    },
+    headerTintColor: '#ffffff'
+  }
 })
