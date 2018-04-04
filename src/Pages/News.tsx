@@ -45,7 +45,7 @@ const TopTabNavigator = TabNavigator({
     activeTintColor: colors.mainTextColorOnDarkBg,
     inactiveTintColor: colors.accessoryTextColorOnDarkBg,
     style: {
-      backgroundColor: colors.topTabBgColor
+      backgroundColor: colors.topBarBgColor
     },
     indicatorStyle: {
       backgroundColor: colors.mainTextColorOnDarkBg
@@ -59,7 +59,7 @@ const TopTabNavigator = TabNavigator({
 const styles = StyleSheet.create({
   tabContainer: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: colors.topTabBgColor
+    backgroundColor: colors.topBarBgColor
   } as ViewStyle
 })
 

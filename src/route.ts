@@ -1,4 +1,5 @@
 import { StackNavigator, TabNavigator } from 'react-navigation'
+import { About } from './Pages/About'
 import { News } from './Pages/News'
 import { Temp } from './Temp'
 
@@ -19,7 +20,7 @@ export const RootStackNavigator = StackNavigator({
         path: 'discovery'
       },
       About: {
-        screen: Temp,
+        screen: About,
         path: 'about'
       }
     }),
