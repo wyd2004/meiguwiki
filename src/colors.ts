@@ -1,4 +1,6 @@
 export const highlightTextColor = '#1378ee'
+export const bottomTabInactiveTintColor = '#a2a2a2'
+export const bottomTabActiveTintColor = '#1482f1'
 export const topBarBgColor = '#222222'
 export const mainTextColorOnDarkBg = '#ffffff'
 export const accessoryTextColorOnDarkBg = '#999999'

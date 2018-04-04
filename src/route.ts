@@ -1,4 +1,5 @@
 import { StackNavigator, TabNavigator } from 'react-navigation'
+import { bottomTabActiveTintColor, bottomTabInactiveTintColor } from './colors'
 import { About } from './Pages/About'
 import { News } from './Pages/News'
 import { Temp } from './Temp'
@@ -22,6 +23,11 @@ export const RootStackNavigator = StackNavigator({
       About: {
         screen: About,
         path: 'about'
+      }
+    }, {
+      tabBarOptions: {
+        activeTintColor: bottomTabActiveTintColor,
+        inactiveTintColor: bottomTabInactiveTintColor
       }
     }),
     path: 'hub',

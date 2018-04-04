@@ -12,6 +12,7 @@ import {
   View,
   ViewStyle
 } from 'react-native'
+import FAIcon from 'react-native-vector-icons/FontAwesome'
 import IoniconsIcon from 'react-native-vector-icons/Ionicons'
 import { NavigationScreenConfig, NavigationTabScreenOptions } from 'react-navigation'
 import * as colors from '../colors'
@@ -62,10 +63,7 @@ const styles = StyleSheet.create({
     color: colors.mainTextColorOnLightBg,
     fontSize: 16,
     flexGrow: 1
-  } as TextStyle,
-  listItemRightArrow: {
-    color: colors.listArrowColor
-  }
+  } as TextStyle
 })
 
 interface ILink {
@@ -81,7 +79,7 @@ class ListCell extends React.Component<ILink> {
     return (
       <TouchableOpacity style={styles.listItemContainer} onPress={this.onPress}>
         <Text style={styles.listItemText}>{this.props.title}</Text>
-        <IoniconsIcon style={styles.listItemRightArrow} name="ios-arrow-forward" size={20} />
+        <IoniconsIcon name="ios-arrow-forward" size={20} color={colors.listArrowColor} />
       </TouchableOpacity>
     )
   }
@@ -104,7 +102,10 @@ const links: ILink[] = [{
 
 export class About extends React.Component {
   static navigationOptions: NavigationScreenConfig<NavigationTabScreenOptions> = {
-    tabBarLabel: '资讯'
+    tabBarLabel: '关于',
+    tabBarIcon ({ focused, tintColor }) {
+      return <FAIcon name="user-circle-o" size={20} color={tintColor} />
+    }
   }
   renderListItem: ListRenderItem<ILink> = ({ item }) => <ListCell {...item} />
   renderListSeparator = () => {

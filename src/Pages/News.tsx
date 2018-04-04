@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { SafeAreaView, StyleSheet, Text, ViewStyle } from 'react-native'
+import FAIcon from 'react-native-vector-icons/FontAwesome'
 import { NavigationScreenConfig, NavigationTabScreenOptions, TabBarTop, TabNavigator } from 'react-navigation'
 import * as colors from '../colors'
 
@@ -65,7 +66,10 @@ const styles = StyleSheet.create({
 
 export class News extends React.Component {
   static navigationOptions: NavigationScreenConfig<NavigationTabScreenOptions> = {
-    tabBarLabel: '资讯'
+    tabBarLabel: '资讯',
+    tabBarIcon ({ focused, tintColor }) {
+      return <FAIcon name="newspaper-o" size={20} color={tintColor} />
+    }
   }
   render () {
     return (
