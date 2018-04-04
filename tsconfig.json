@@ -4,7 +4,14 @@
     "jsx": "react",
     "noEmit": true,
     "moduleResolution": "node",
-    "importHelpers": true
+    "importHelpers": true,
+    "plugins": [
+      {
+        "name": "tslint-language-service",
+        "ignoreDefinitionFiles": true,
+        "disableNoUnusedVariableRule": false
+      }
+    ]
   },
   "exclude": [
     "node_modules"
