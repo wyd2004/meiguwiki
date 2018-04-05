@@ -13,6 +13,7 @@ import {
 import FeatherIcon from 'react-native-vector-icons/Feather'
 import FAIcon from 'react-native-vector-icons/FontAwesome'
 import {
+  NavigationRouteConfigMap,
   NavigationScreenConfig,
   NavigationScreenProps,
   NavigationTabScreenOptions,
@@ -21,10 +22,10 @@ import {
 } from 'react-navigation'
 import * as colors from '../colors'
 import { RefreshListView } from '../components/RefreshListView'
+import { IArticleNavParams } from '../pages/Article'
 import { store } from '../stores'
 import { IArticle } from '../stores/ArticleStore'
 import { formatTime } from '../utils'
-import { IArticleNavParams } from './Article'
 
 const styles = StyleSheet.create({
   tabContainer: {
@@ -127,58 +128,56 @@ function createNewsList (fid: number, forumName: string) {
   return NewsList
 }
 
-// tslint:disable-next-line:variable-name
-const TopTabNavigator = TabNavigator({
-  HotNews: {
-    screen: createNewsList(21, '热点新闻'),
-    path: 'hot-news'
-  },
-  Chinese7x24: {
-    screen: createNewsList(5, '7x24 中文'),
-    path: 'chinese-7x24'
-  },
-  Blockchain7x24: {
-    screen: createNewsList(23, '7x24 区块链'),
-    path: 'blockchain-7x24'
-  },
-  English7x24: {
-    screen: createNewsList(6, '7x24 英文'),
-    path: 'english-7x24'
-  }
-}, {
-  tabBarComponent: TabBarTop,
-  tabBarPosition: 'top',
-  swipeEnabled: true,
-  animationEnabled: true,
-  tabBarOptions: {
-    activeTintColor: colors.mainTextColorOnDarkBg,
-    inactiveTintColor: colors.accessoryTextColorOnDarkBg,
-    style: {
-      backgroundColor: colors.topBarBgColor
-    },
-    indicatorStyle: {
-      backgroundColor: colors.mainTextColorOnDarkBg
-    },
-    labelStyle: {
-      fontSize: 15
-    }
-  }
-})
+export interface IArticleHubConfig<NavigationOptions> {
+  navigationOptions?: NavigationScreenConfig<NavigationOptions>
+  forums: {
+    routeName: string;
+    fid: number;
+    label: string;
+    path: string;
+  }[]
+}
 
-export class News extends React.Component<NavigationScreenProps> {
-  static navigationOptions: NavigationScreenConfig<NavigationTabScreenOptions> = {
-    tabBarLabel: '资讯',
-    tabBarIcon ({ focused, tintColor }) {
-      return <FAIcon name="newspaper-o" size={20} color={tintColor} />
+export function createArticleHub<NavigationOptions = never> (hubConfig: IArticleHubConfig<NavigationOptions>) {
+  const routeConfigMap: NavigationRouteConfigMap = {}
+  for (const forum of hubConfig.forums) {
+    routeConfigMap[forum.routeName] = {
+      screen: createNewsList(forum.fid, forum.label),
+      path: forum.path
     }
   }
-  // https://github.com/react-navigation/react-navigation/issues/3598#issuecomment-375622188
-  static router = TopTabNavigator.router
-  render () {
-    return (
-      <SafeAreaView style={styles.tabContainer}>
-        <TopTabNavigator navigation={this.props.navigation} />
-      </SafeAreaView>
-    )
+  // tslint:disable-next-line:variable-name
+  const TopTabNavigator = TabNavigator(routeConfigMap, {
+    tabBarComponent: TabBarTop,
+    tabBarPosition: 'top',
+    swipeEnabled: true,
+    animationEnabled: true,
+    tabBarOptions: {
+      activeTintColor: colors.mainTextColorOnDarkBg,
+      inactiveTintColor: colors.accessoryTextColorOnDarkBg,
+      style: {
+        backgroundColor: colors.topBarBgColor
+      },
+      indicatorStyle: {
+        backgroundColor: colors.mainTextColorOnDarkBg
+      },
+      labelStyle: {
+        fontSize: 15
+      }
+    }
+  })
+
+  class ArticleHub extends React.Component<NavigationScreenProps> {
+    static navigationOptions = hubConfig.navigationOptions
+    // https://github.com/react-navigation/react-navigation/issues/3598#issuecomment-375622188
+    static router = TopTabNavigator.router
+    render () {
+      return (
+        <SafeAreaView style={styles.tabContainer}>
+          <TopTabNavigator navigation={this.props.navigation} />
+        </SafeAreaView>
+      )
+    }
   }
+  return ArticleHub
 }
