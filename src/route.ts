@@ -3,9 +3,9 @@ import { bottomTabActiveTintColor, bottomTabInactiveTintColor, topBarBgColor } f
 import { About } from './pages/About'
 import { Article } from './pages/Article'
 import { Discovery } from './pages/Discovery'
+import { Navigation } from './pages/Navigation'
 import { NavigationLinkList } from './pages/NavigationLinkList'
 import { News } from './pages/News'
-import { Temp } from './Temp'
 
 // tslint:disable-next-line:variable-name
 export const RootStackNavigator = StackNavigator({
@@ -16,7 +16,7 @@ export const RootStackNavigator = StackNavigator({
         path: 'news'
       },
       Navigation: {
-        screen: Temp,
+        screen: Navigation,
         path: 'navigation'
       },
       Discovery: {

@@ -9,10 +9,10 @@ import {
   NavigationScreenConfig,
   NavigationScreenProps,
   NavigationTabScreenOptions,
-  TabBarTop,
   TabNavigator
 } from 'react-navigation'
 import * as colors from '../colors'
+import { topTabNavigatorConfig } from '../config'
 import { createArticleList } from './ArticleList'
 
 const styles = StyleSheet.create({
@@ -43,25 +43,7 @@ export function createArticleHub<NavigationOptions = never> (hubConfig: IArticle
     }
   }
   // tslint:disable-next-line:variable-name
-  const TopTabNavigator = TabNavigator(routeConfigMap, {
-    tabBarComponent: TabBarTop,
-    tabBarPosition: 'top',
-    swipeEnabled: true,
-    animationEnabled: true,
-    tabBarOptions: {
-      activeTintColor: colors.mainTextColorOnDarkBg,
-      inactiveTintColor: colors.accessoryTextColorOnDarkBg,
-      style: {
-        backgroundColor: colors.topBarBgColor
-      },
-      indicatorStyle: {
-        backgroundColor: colors.mainTextColorOnDarkBg
-      },
-      labelStyle: {
-        fontSize: 15
-      }
-    }
-  })
+  const TopTabNavigator = TabNavigator(routeConfigMap, topTabNavigatorConfig)
 
   class ArticleHub extends React.Component<NavigationScreenProps> {
     static navigationOptions = hubConfig.navigationOptions

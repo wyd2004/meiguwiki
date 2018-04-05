@@ -30,7 +30,7 @@ export class ArticleStore {
       set(article, {
         tid: msg.tid,
         userName: msg.username,
-        subject: msg.subject,
+        subject: msg.subject.trim(),
         message: msg.message,
         timestamp: msg.last_date,
         url: msg.url,

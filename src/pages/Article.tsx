@@ -15,6 +15,7 @@ import { NavigationScreenConfig, NavigationScreenProps, NavigationStackScreenOpt
 import * as colors from '../colors'
 import { EnhancedWebView } from '../components/EnhancedWebView'
 import { LoadingOverlay } from '../components/LoadingOverlay'
+import { webBaseUrl } from '../config'
 import { store } from '../stores'
 import { IArticle } from '../stores/ArticleStore'
 import { formatTime } from '../utils'
@@ -77,6 +78,7 @@ export class Article extends React.Component<NavigationScreenProps<IArticleNavPa
   static navigationOptions: NavigationScreenConfig<NavigationStackScreenOptions> = ({ navigation }) => {
     const params = navigation.state.params as IArticleNavParams
     return {
+      title: '文章',
       headerRight: (
         <ShareButton
           tid={params.tid}
@@ -116,7 +118,7 @@ export class Article extends React.Component<NavigationScreenProps<IArticleNavPa
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <base href="http://meiguwiki.com/" />
+  <base href="${webBaseUrl}" />
   <meta name="format-detection" content="telephone=no" />
   <title>${article.subject}</title>
   <style>

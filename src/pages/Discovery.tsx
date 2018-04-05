@@ -1,5 +1,5 @@
 import * as React from 'react'
-import IoniconsIcon from 'react-native-vector-icons/Ionicons'
+import FAIcon from 'react-native-vector-icons/FontAwesome'
 import { NavigationTabScreenOptions } from 'react-navigation'
 import { createArticleHub } from '../components/ArticleHub'
 
@@ -7,7 +7,7 @@ import { createArticleHub } from '../components/ArticleHub'
 export const Discovery = createArticleHub({
   navigationOptions: {
     tabBarLabel: '发现',
-    tabBarIcon: ({ focused, tintColor }) => <IoniconsIcon name="md-compass" size={20} color={tintColor} />
+    tabBarIcon: ({ focused, tintColor }) => <FAIcon name="safari" size={20} color={tintColor} />
   } as NavigationTabScreenOptions,
   forums: [{
     routeName: 'StockCoinTalk',

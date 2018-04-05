@@ -42,7 +42,7 @@ export class ForumStore {
             tid: article.tid,
             fid: article.fid,
             userName: article.username,
-            subject: article.subject,
+            subject: article.subject.trim(),
             timestamp: article.last_date,
             views: article.views,
             url: article.url
