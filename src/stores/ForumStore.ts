@@ -44,7 +44,8 @@ export class ForumStore {
             userName: article.username,
             subject: article.subject,
             timestamp: article.last_date,
-            views: article.views
+            views: article.views,
+            url: article.url
           })
         }
         forum.lastUpdateId = uuidv4()

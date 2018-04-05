@@ -44,8 +44,8 @@ export class Temp extends React.Component<NavigationInjectedProps> {
     counter++
   }
   openArticle = () => {
-    this.props.navigation.navigate('Article', {
-      tid: 4109
+    this.props.navigation.navigate('NavigationLinkList', {
+      fid: 8
     })
   }
   render () {

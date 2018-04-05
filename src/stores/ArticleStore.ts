@@ -10,6 +10,7 @@ export interface IArticle {
   timestamp?: number
   views?: number
   loading?: boolean
+  url?: string
 }
 
 export class ArticleStore {
@@ -32,6 +33,7 @@ export class ArticleStore {
         subject: msg.subject,
         message: msg.message,
         timestamp: msg.last_date,
+        url: msg.url,
         loading: false
       } as IArticle)
     })
