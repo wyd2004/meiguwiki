@@ -4,7 +4,6 @@ import * as React from 'react'
 import {
   Linking,
   NativeSyntheticEvent,
-  StyleSheet,
   WebView,
   WebViewMessageEventData,
   WebViewProperties
@@ -87,7 +86,6 @@ const script = `
 export class EnhancedWebView extends React.Component<WebViewProperties> {
   @observable webViewHeight = 0
   onMessage = async (event: NativeSyntheticEvent<WebViewMessageEventData>) => {
-    console.log(event.nativeEvent.data)
     const [op, ...parts] = event.nativeEvent.data.split(':')
     const data = parts.join(':')
     switch (op) {
@@ -109,10 +107,10 @@ export class EnhancedWebView extends React.Component<WebViewProperties> {
     return (
       <WebView
         {...this.props}
-        style={StyleSheet.flatten([
+        style={[
           this.props.style,
           { height: this.webViewHeight }
-        ])}
+        ]}
         injectedJavaScript={script}
         onMessage={this.onMessage}
         scrollEnabled={false}

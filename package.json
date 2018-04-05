@@ -5,17 +5,20 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
+    "lint": "tslint --fix --project tsconfig.json",
     "release": "standard-version"
   },
   "dependencies": {
     "axios": "^0.18.0",
     "mobx": "^4.1.1",
     "mobx-react": "^5.0.0",
+    "moment": "^2.22.0",
     "react": "^16.3.0-alpha.1",
     "react-native": "0.54.4",
     "react-native-vector-icons": "^4.6.0",
     "react-navigation": "^1.5.9",
-    "tslib": "^1.9.0"
+    "tslib": "^1.9.0",
+    "uuid": "^3.2.1"
   },
   "devDependencies": {
     "@types/react": "^16.3.5",

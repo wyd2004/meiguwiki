@@ -3,17 +3,20 @@ import { action, observable, remove, runInAction, set } from 'mobx'
 
 export interface IArticle {
   tid?: number
+  fid?: number
   userName?: string
   subject?: string
   message?: string
-  dateTime?: string
+  timestamp?: number
+  views?: number
   loading?: boolean
+  url?: string
 }
 
 export class ArticleStore {
-  @observable articles: { [tid: string]: IArticle } = {}
+  @observable articles: { [tid: number]: IArticle } = {}
   @action async fetchArticle (tid: number, stubArticle?: IArticle) {
-    const article = observable.object(stubArticle || {})
+    const article = observable.object(stubArticle || { tid })
     set(article, {
       loading: true
     } as IArticle)
@@ -27,9 +30,10 @@ export class ArticleStore {
       set(article, {
         tid: msg.tid,
         userName: msg.username,
-        subject: msg.subject,
+        subject: msg.subject.trim(),
         message: msg.message,
-        dateTime: msg.last_date,
+        timestamp: msg.last_date,
+        url: msg.url,
         loading: false
       } as IArticle)
     })

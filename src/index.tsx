@@ -6,9 +6,10 @@ import {
   StyleSheet,
   View
 } from 'react-native'
+import { apiBaseUrl } from './config'
 import { RootStackNavigator } from './route'
 
-axios.defaults.baseURL = 'http://198.13.52.6/mg/api/v1.0'
+axios.defaults.baseURL = apiBaseUrl
 
 export class App extends React.Component {
   render () {

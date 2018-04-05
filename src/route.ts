@@ -2,8 +2,10 @@ import { StackNavigator, TabNavigator } from 'react-navigation'
 import { bottomTabActiveTintColor, bottomTabInactiveTintColor, topBarBgColor } from './colors'
 import { About } from './pages/About'
 import { Article } from './pages/Article'
+import { Discovery } from './pages/Discovery'
+import { Navigation } from './pages/Navigation'
+import { NavigationLinkList } from './pages/NavigationLinkList'
 import { News } from './pages/News'
-import { Temp } from './Temp'
 
 // tslint:disable-next-line:variable-name
 export const RootStackNavigator = StackNavigator({
@@ -14,11 +16,11 @@ export const RootStackNavigator = StackNavigator({
         path: 'news'
       },
       Navigation: {
-        screen: Temp,
+        screen: Navigation,
         path: 'navigation'
       },
       Discovery: {
-        screen: Temp,
+        screen: Discovery,
         path: 'discovery'
       },
       About: {
@@ -40,11 +42,14 @@ export const RootStackNavigator = StackNavigator({
   Article: {
     screen: Article,
     path: 'article/:tid'
+  },
+  NavigationLinkList: {
+    screen: NavigationLinkList,
+    path: 'navigation/:fid'
   }
 }, {
   initialRouteName: 'Hub',
   headerMode: 'screen',
-  headerTransitionPreset: 'fade-in-place',
   navigationOptions: {
     headerTruncatedBackTitle: '返回',
     headerStyle: {
