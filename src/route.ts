@@ -44,7 +44,6 @@ export const RootStackNavigator = StackNavigator({
 }, {
   initialRouteName: 'Hub',
   headerMode: 'screen',
-  headerTransitionPreset: 'fade-in-place',
   navigationOptions: {
     headerTruncatedBackTitle: '返回',
     headerStyle: {

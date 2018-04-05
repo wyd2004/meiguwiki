@@ -22,9 +22,9 @@ export class LoadingOverlay extends React.Component<{
   render () {
     return (
       <View
-        style={StyleSheet.flatten([styles.container, {
+        style={[styles.container, {
           display: this.props.visible ? 'flex' : 'none'
-        }])}
+        }]}
       >
         <View style={styles.centerView}>
           <ActivityIndicator size="large" color="white" />
