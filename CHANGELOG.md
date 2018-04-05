@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.0"></a>
+# [0.2.0](https://git.coding.net/yandb/meiguwiki/compare/v0.1.0...v0.2.0) (2018-04-05)
+
+
+### Features
+
+* 实现“发现”Tab ([50f5fd5](https://git.coding.net/yandb/meiguwiki/commits/50f5fd5))
+* 实现“导航”Tab ([0b912f1](https://git.coding.net/yandb/meiguwiki/commits/0b912f1))
+* 实现“导航”Tab - 二级文章（跳转链接）列表 ([86281e8](https://git.coding.net/yandb/meiguwiki/commits/86281e8))
+* 实现“资讯”Tab ([932acd0](https://git.coding.net/yandb/meiguwiki/commits/932acd0))
+
+
+
 <a name="0.1.0"></a>
 # [0.1.0](https://git.coding.net/yandb/meiguwiki/compare/v0.0.1...v0.1.0) (2018-04-04)
 
