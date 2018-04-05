@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
+    "lint": "tslint --fix --project tsconfig.json",
     "release": "standard-version"
   },
   "dependencies": {
