@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.0"></a>
+# [0.3.0](https://git.coding.net/yandb/meiguwiki/compare/v0.2.0...v0.3.0) (2018-04-06)
+
+
+### Bug Fixes
+
+* 优化 store，保证多个页面使用同一个数据时不会冲突 ([8e5f12a](https://git.coding.net/yandb/meiguwiki/commits/8e5f12a))
+
+
+### Features
+
+* Splash 屏显示“美股维基百科” ([2083152](https://git.coding.net/yandb/meiguwiki/commits/2083152))
+* 优化无网络下加载错误提示 ([62ecab1](https://git.coding.net/yandb/meiguwiki/commits/62ecab1))
+* 实现 Deep Linking ([aa294a4](https://git.coding.net/yandb/meiguwiki/commits/aa294a4))
+* 实现文章分享功能 ([896da04](https://git.coding.net/yandb/meiguwiki/commits/896da04))
+
+
+### Performance Improvements
+
+* WebView 初始高度加大，内容更快进入视野 ([010db76](https://git.coding.net/yandb/meiguwiki/commits/010db76))
+
+
+
 <a name="0.2.0"></a>
 # [0.2.0](https://git.coding.net/yandb/meiguwiki/compare/v0.1.0...v0.2.0) (2018-04-05)
 
