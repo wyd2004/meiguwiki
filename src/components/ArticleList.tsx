@@ -140,11 +140,8 @@ export function createArticleList<NavigationOptions = never> (
       jumpMode: false
     }
     forum: ForumHandler
-    constructor (props: IArticleListProps) {
-      super(props)
+    async componentWillMount () {
       this.forum = store.forumStore.openForum(fid)
-    }
-    async componentDidMount () {
       await this.forum.loadMoreArticles(true)
     }
     componentWillUnmount () {
