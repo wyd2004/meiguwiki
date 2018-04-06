@@ -39,7 +39,7 @@
 			<string>com.meiguwiki.wechat</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>wxplaceholder</string>
+				<string>wxappid</string>
 			</array>
 		</dict>
 	</array>

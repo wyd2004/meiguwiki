@@ -3,6 +3,7 @@ import * as colors from './colors'
 
 export const apiBaseUrl = 'http://198.13.52.6/mg/api/v1.0'
 export const webBaseUrl = 'http://meiguwiki.com/'
+export const weChatAppId = 'wxappid'
 export const topTabNavigatorConfig: TabNavigatorConfig = {
   tabBarComponent: TabBarTop,
   tabBarPosition: 'top',
