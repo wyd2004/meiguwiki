@@ -64,10 +64,6 @@ export class RefreshListView<TItem> extends React.PureComponent<IRefreshListView
     footerEmptyDataText: '暂时没有更多数据'
   }
 
-  componentWillReceiveProps (nextProps: IRefreshListViewProps<TItem>) {
-    log(`[RefreshListView]  RefreshListView componentWillReceiveProps ${nextProps.refreshState}`)
-  }
-
   componentDidUpdate (prevProps: IRefreshListViewProps<TItem>) {
     log(`[RefreshListView]  RefreshListView componentDidUpdate ${prevProps.refreshState}`)
   }

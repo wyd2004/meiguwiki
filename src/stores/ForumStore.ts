@@ -12,29 +12,36 @@ export interface IForum {
   lastUpdateId: string
 }
 
-export class ForumStore {
-  @observable forums: { [fid: number]: IForum } = {}
-  @action async fetchMoreArticles (fid: number, refresh = false) {
-    let forum = this.forums[fid]
-    if (!forum || refresh) {
+export class ForumHandler {
+  constructor (
+    private fid: number,
+    private store: ForumStore
+  ) {
+    if (store.forumRefCount[fid]) {
+      store.forumRefCount[fid]++
+    } else {
+      store.forumRefCount[fid] = 1
+      set(this.store.forums, this.fid.toString(), this.emptyForum())
+    }
+  }
+  @action async loadMoreArticles (refresh = false) {
+    let forum = this.get()
+    if (refresh) {
       forum = observable.object({
-        fid,
-        page: -1,
-        refreshState: RefreshState.Idle,
-        articles: refresh ? forum.articles : [],
-        lastUpdateId: uuidv4()
-      })
-      set(this.forums, fid.toString(), forum)
+        ...this.emptyForum(),
+        articles: forum.articles
+      } as IForum)
+      set(this.store.forums, this.fid.toString(), forum)
     }
     if (forum.refreshState === RefreshState.HeaderRefreshing) return
     if (forum.refreshState === RefreshState.FooterRefreshing && !refresh) return
     if (forum.refreshState === RefreshState.NoMoreData && !refresh) return
     const isRefresh = forum.page === -1
     forum.refreshState = isRefresh ? RefreshState.HeaderRefreshing : RefreshState.FooterRefreshing
-    forum.page++
     try {
-      const res = await axios.get(`tasks/${fid}/${forum.page * 10}`)
+      const res = await axios.get(`tasks/${this.fid}/${(forum.page + 1) * 10}`)
       runInAction(() => {
+        forum.page++
         forum.refreshState = res.data.tasks.length <= 0 ? RefreshState.NoMoreData : RefreshState.Idle
         if (isRefresh) forum.articles = []
         for (const article of res.data.tasks) {
@@ -57,7 +64,32 @@ export class ForumStore {
       })
     }
   }
-  @action unloadForum (fid: number) {
-    remove(this.forums, fid.toString())
+  get () {
+    return this.store.forums[this.fid]
+  }
+  @action destroy () {
+    this.store.forumRefCount[this.fid]--
+    if (this.store.forumRefCount[this.fid] <= 0) {
+      delete this.store.forumRefCount[this.fid]
+      remove(this.store.forums, this.fid.toString())
+    }
+  }
+  private emptyForum () {
+    return {
+      fid: this.fid,
+      page: -1,
+      refreshState: RefreshState.Idle,
+      articles: [],
+      lastUpdateId: uuidv4()
+    }
+  }
+}
+
+export class ForumStore {
+  @observable forums: { [fid: number]: IForum } = {}
+  forumRefCount: { [tid: number]: number } = {}
+
+  openForum (fid: number) {
+    return new ForumHandler(fid, this)
   }
 }

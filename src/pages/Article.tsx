@@ -16,8 +16,9 @@ import * as colors from '../colors'
 import { EnhancedWebView } from '../components/EnhancedWebView'
 import { LoadingOverlay } from '../components/LoadingOverlay'
 import { webBaseUrl } from '../config'
+import { IModalShareNavParams } from '../pages/ModalShare'
 import { store } from '../stores'
-import { IArticle } from '../stores/ArticleStore'
+import { ArticleHandler, IArticle } from '../stores/ArticleStore'
 import { formatTime } from '../utils'
 
 const styles = StyleSheet.create({
@@ -26,15 +27,17 @@ const styles = StyleSheet.create({
     backgroundColor: colors.contentBgColor
   } as ViewStyle,
   shareButton: {
-    padding: 10,
-    paddingRight: 15
+    paddingHorizontal: 15,
+    alignSelf: 'stretch',
+    justifyContent: 'center'
   } as ViewStyle,
   titleText: {
     fontSize: 22,
     fontWeight: 'bold',
     marginHorizontal: 15,
     marginTop: 22,
-    marginBottom: 18
+    marginBottom: 18,
+    color: colors.mainTextColorOnLightBg
   } as TextStyle,
   titleAccessoryText: {
     color: colors.accessoryTextColorOnLightBg,
@@ -51,17 +54,18 @@ const styles = StyleSheet.create({
   } as ViewStyle
 })
 
-class ShareButton extends React.Component<{
-  tid: number;
-  subject?: string;
+class ShareButton extends React.Component<IArticle & NavigationScreenProps & {
+  disabled: boolean;
 }> {
+  onPress = () => {
+    this.props.navigation.navigate('ModalShare', {
+      article: this.props
+    } as IModalShareNavParams)
+  }
   render () {
     return (
-      <TouchableOpacity
-        style={styles.shareButton}
-        {...this.props}
-      >
-        <SLIIcon name="share-alt" size={20} color="#ffffff" />
+      <TouchableOpacity disabled={this.props.disabled} style={styles.shareButton} onPress={this.onPress}>
+        <SLIIcon name="share-alt" size={18} color="#ffffff" />
       </TouchableOpacity>
     )
   }
@@ -70,19 +74,24 @@ class ShareButton extends React.Component<{
 export interface IArticleNavParams {
   tid: number
   stubArticle?: IArticle
+  fullArticle?: IArticle
 }
 
+interface IArticleProps extends NavigationScreenProps<IArticleNavParams> {}
+
 @observer
-export class Article extends React.Component<NavigationScreenProps<IArticleNavParams>> {
+export class Article extends React.Component<IArticleProps> {
   unmounted = true
+  article: ArticleHandler
   static navigationOptions: NavigationScreenConfig<NavigationStackScreenOptions> = ({ navigation }) => {
     const params = navigation.state.params as IArticleNavParams
     return {
       title: '文章',
       headerRight: (
         <ShareButton
-          tid={params.tid}
-          subject={params.stubArticle && params.stubArticle.subject}
+          navigation={navigation}
+          disabled={!params.fullArticle}
+          {...params.fullArticle}
         />
       )
     }
@@ -91,7 +100,12 @@ export class Article extends React.Component<NavigationScreenProps<IArticleNavPa
     this.unmounted = false
     try {
       const { tid, stubArticle } = this.props.navigation.state.params
-      await store.articleStore.fetchArticle(tid, stubArticle)
+      this.article = store.articleStore.openArticle(tid)
+      await this.article.load(stubArticle)
+      this.props.navigation.setParams({
+        ...this.props.navigation.state.params,
+        fullArticle: this.article.get()
+      })
     } catch (e) {
       if (this.unmounted) return
       Alert.alert('加载失败', e instanceof Error ? e.message : '文章加载失败', [{
@@ -103,12 +117,10 @@ export class Article extends React.Component<NavigationScreenProps<IArticleNavPa
   }
   componentWillUnmount () {
     this.unmounted = true
-    const { tid } = this.props.navigation.state.params
-    store.articleStore.unloadArticle(tid)
+    this.article.destroy()
   }
   render () {
-    const { tid } = this.props.navigation.state.params
-    const article = store.articleStore.articles[tid]
+    const article = this.article.get()
 
     // tslint:disable:max-line-length
     const articleHtml = `
@@ -159,7 +171,6 @@ export class Article extends React.Component<NavigationScreenProps<IArticleNavPa
 
     return (
       <View style={styles.container}>
-        <LoadingOverlay visible={article.loading} />
         <ScrollView>
           <Text style={styles.titleText}>{article.subject}</Text>
           <Text style={styles.titleAccessoryText}>{article.userName} {formatTime(article.timestamp)}</Text>
@@ -169,6 +180,7 @@ export class Article extends React.Component<NavigationScreenProps<IArticleNavPa
             source={{ html: articleHtml, baseUrl: '' }}
           />}
         </ScrollView>
+        <LoadingOverlay visible={article.loading} />
       </View>
     )
   }

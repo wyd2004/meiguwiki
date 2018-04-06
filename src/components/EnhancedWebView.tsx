@@ -1,7 +1,8 @@
-import { observable } from 'mobx'
+import { action, observable } from 'mobx'
 import { observer } from 'mobx-react'
 import * as React from 'react'
 import {
+  Dimensions,
   Linking,
   NativeSyntheticEvent,
   WebView,
@@ -84,8 +85,8 @@ const script = `
 
 @observer
 export class EnhancedWebView extends React.Component<WebViewProperties> {
-  @observable webViewHeight = 0
-  onMessage = async (event: NativeSyntheticEvent<WebViewMessageEventData>) => {
+  @observable webViewHeight = Dimensions.get('window').height
+  @action onMessage = async (event: NativeSyntheticEvent<WebViewMessageEventData>) => {
     const [op, ...parts] = event.nativeEvent.data.split(':')
     const data = parts.join(':')
     switch (op) {
