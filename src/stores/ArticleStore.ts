@@ -13,15 +13,25 @@ export interface IArticle {
   url?: string
 }
 
-export class ArticleStore {
-  @observable articles: { [tid: number]: IArticle } = {}
-  @action async fetchArticle (tid: number, stubArticle?: IArticle) {
-    const article = observable.object(stubArticle || { tid })
+export class ArticleHandler {
+  constructor (
+    private tid: number,
+    private store: ArticleStore
+  ) {
+    if (store.articleRefCount[tid]) {
+      store.articleRefCount[tid]++
+    } else {
+      store.articleRefCount[tid] = 1
+      set(this.store.articles, this.tid.toString(), { tid } as IArticle)
+    }
+  }
+  @action async load (stubArticle?: IArticle) {
+    const article = this.get()
+    if (stubArticle) set(article, stubArticle)
     set(article, {
       loading: true
     } as IArticle)
-    set(this.articles, tid.toString(), article)
-    const res = await axios.get(`msg/${tid}`)
+    const res = await axios.get(`msg/${this.tid}`)
     runInAction(() => {
       if (res.data.messages.length <= 0) {
         throw new Error('文章不存在')
@@ -38,7 +48,23 @@ export class ArticleStore {
       } as IArticle)
     })
   }
-  @action unloadArticle (tid: number) {
-    remove(this.articles, tid.toString())
+  get () {
+    return this.store.articles[this.tid]
+  }
+  @action destroy () {
+    this.store.articleRefCount[this.tid]--
+    if (this.store.articleRefCount[this.tid] <= 0) {
+      delete this.store.articleRefCount[this.tid]
+      remove(this.store.articles, this.tid.toString())
+    }
+  }
+}
+
+export class ArticleStore {
+  @observable articles: { [tid: number]: IArticle } = {}
+  articleRefCount: { [tid: number]: number } = {}
+
+  openArticle (tid: number) {
+    return new ArticleHandler(tid, this)
   }
 }

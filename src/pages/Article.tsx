@@ -17,7 +17,7 @@ import { EnhancedWebView } from '../components/EnhancedWebView'
 import { LoadingOverlay } from '../components/LoadingOverlay'
 import { webBaseUrl } from '../config'
 import { store } from '../stores'
-import { IArticle } from '../stores/ArticleStore'
+import { ArticleHandler, IArticle } from '../stores/ArticleStore'
 import { formatTime } from '../utils'
 
 const styles = StyleSheet.create({
@@ -75,6 +75,7 @@ export interface IArticleNavParams {
 @observer
 export class Article extends React.Component<NavigationScreenProps<IArticleNavParams>> {
   unmounted = true
+  article: ArticleHandler
   static navigationOptions: NavigationScreenConfig<NavigationStackScreenOptions> = ({ navigation }) => {
     const params = navigation.state.params as IArticleNavParams
     return {
@@ -91,7 +92,8 @@ export class Article extends React.Component<NavigationScreenProps<IArticleNavPa
     this.unmounted = false
     try {
       const { tid, stubArticle } = this.props.navigation.state.params
-      await store.articleStore.fetchArticle(tid, stubArticle)
+      this.article = store.articleStore.openArticle(tid)
+      await this.article.load(stubArticle)
     } catch (e) {
       if (this.unmounted) return
       Alert.alert('加载失败', e instanceof Error ? e.message : '文章加载失败', [{
@@ -103,12 +105,10 @@ export class Article extends React.Component<NavigationScreenProps<IArticleNavPa
   }
   componentWillUnmount () {
     this.unmounted = true
-    const { tid } = this.props.navigation.state.params
-    store.articleStore.unloadArticle(tid)
+    this.article.destroy()
   }
   render () {
-    const { tid } = this.props.navigation.state.params
-    const article = store.articleStore.articles[tid]
+    const article = this.article.get()
 
     // tslint:disable:max-line-length
     const articleHtml = `
@@ -159,7 +159,6 @@ export class Article extends React.Component<NavigationScreenProps<IArticleNavPa
 
     return (
       <View style={styles.container}>
-        <LoadingOverlay visible={article.loading} />
         <ScrollView>
           <Text style={styles.titleText}>{article.subject}</Text>
           <Text style={styles.titleAccessoryText}>{article.userName} {formatTime(article.timestamp)}</Text>
@@ -169,6 +168,7 @@ export class Article extends React.Component<NavigationScreenProps<IArticleNavPa
             source={{ html: articleHtml, baseUrl: '' }}
           />}
         </ScrollView>
+        <LoadingOverlay visible={article.loading} />
       </View>
     )
   }
