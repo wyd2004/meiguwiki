@@ -72,10 +72,17 @@ export interface IArticleNavParams {
   stubArticle?: IArticle
 }
 
+interface IArticleProps extends NavigationScreenProps<IArticleNavParams> {}
+
 @observer
-export class Article extends React.Component<NavigationScreenProps<IArticleNavParams>> {
+export class Article extends React.Component<IArticleProps> {
   unmounted = true
   article: ArticleHandler
+  constructor (props: IArticleProps) {
+    super(props)
+    const { tid } = props.navigation.state.params
+    this.article = store.articleStore.openArticle(tid)
+  }
   static navigationOptions: NavigationScreenConfig<NavigationStackScreenOptions> = ({ navigation }) => {
     const params = navigation.state.params as IArticleNavParams
     return {
@@ -88,11 +95,10 @@ export class Article extends React.Component<NavigationScreenProps<IArticleNavPa
       )
     }
   }
-  async componentWillMount () {
+  async componentDidMount () {
     this.unmounted = false
     try {
-      const { tid, stubArticle } = this.props.navigation.state.params
-      this.article = store.articleStore.openArticle(tid)
+      const { stubArticle } = this.props.navigation.state.params
       await this.article.load(stubArticle)
     } catch (e) {
       if (this.unmounted) return

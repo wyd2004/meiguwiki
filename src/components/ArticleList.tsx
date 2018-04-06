@@ -118,7 +118,7 @@ class ListCell extends React.Component<IArticle & NavigationScreenProps & {
   }
 }
 
-interface IArticleListProps {
+interface IArticleListProps extends NavigationScreenProps {
   /**
    * 是否启用跳转模式，即点击后用浏览器打开文章 URL
    *
@@ -134,14 +134,17 @@ export function createArticleList<NavigationOptions = never> (
   navigationOptions?: NavigationScreenConfig<NavigationOptions>
 ) {
   @observer
-  class ArticleList extends React.Component<IArticleListProps & NavigationScreenProps> {
+  class ArticleList extends React.Component<IArticleListProps> {
     static navigationOptions = navigationOptions
     static defaultProps: Partial<IArticleListProps> = {
       jumpMode: false
     }
     forum: ForumHandler
-    async componentWillMount () {
+    constructor (props: IArticleListProps) {
+      super(props)
       this.forum = store.forumStore.openForum(fid)
+    }
+    async componentDidMount () {
       await this.forum.loadMoreArticles(true)
     }
     componentWillUnmount () {
