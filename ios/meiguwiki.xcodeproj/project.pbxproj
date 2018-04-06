@@ -50,6 +50,13 @@
 		AEA0DAD318D24AAE92E1A0B4 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA59547CDDA840FBB8E8A8EB /* libRNVectorIcons.a */; };
 		BA31297709294C3489A49F92 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F0F8433FDA8F46D79550D037 /* EvilIcons.ttf */; };
 		BDC07144788D4944A500EBB0 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B740A3637D3B46FB8F3BA99A /* FontAwesome.ttf */; };
+		C140112B207785EA004B8D3E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C140112A207785EA004B8D3E /* SystemConfiguration.framework */; };
+		C140112D207785F3004B8D3E /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C140112C207785F3004B8D3E /* CoreTelephony.framework */; };
+		C140112F20778604004B8D3E /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C140112E20778604004B8D3E /* libsqlite3.0.tbd */; };
+		C14011312077860F004B8D3E /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C14011302077860F004B8D3E /* libc++.tbd */; };
+		C14011332077861A004B8D3E /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C14011322077861A004B8D3E /* libz.tbd */; };
+		C14011352077864F004B8D3E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14011342077864E004B8D3E /* Security.framework */; };
+		C14011372077866A004B8D3E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14011362077866A004B8D3E /* CFNetwork.framework */; };
 		CD16CFA8310F42A5BBB14A05 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 460914A3CABE45F3B9836CE5 /* MaterialIcons.ttf */; };
 /* End PBXBuildFile section */
 
@@ -387,6 +394,13 @@
 		B17AEBAF05E14773819000FB /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		B740A3637D3B46FB8F3BA99A /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		BFC47E5CCAB448E9979C42CF /* RCTWeChat.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTWeChat.xcodeproj; path = "../node_modules/react-native-wechat/ios/RCTWeChat.xcodeproj"; sourceTree = "<group>"; };
+		C140112A207785EA004B8D3E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		C140112C207785F3004B8D3E /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		C140112E20778604004B8D3E /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		C14011302077860F004B8D3E /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		C14011322077861A004B8D3E /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		C14011342077864E004B8D3E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		C14011362077866A004B8D3E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		C2FCE0A4A08A4AB0B4760462 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		CA59547CDDA840FBB8E8A8EB /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
 		D590075CD7ED44E6AE48FF28 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
@@ -408,6 +422,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C14011372077866A004B8D3E /* CFNetwork.framework in Frameworks */,
+				C14011352077864F004B8D3E /* Security.framework in Frameworks */,
+				C14011332077861A004B8D3E /* libz.tbd in Frameworks */,
+				C14011312077860F004B8D3E /* libc++.tbd in Frameworks */,
+				C140112F20778604004B8D3E /* libsqlite3.0.tbd in Frameworks */,
+				C140112D207785F3004B8D3E /* CoreTelephony.framework in Frameworks */,
+				C140112B207785EA004B8D3E /* SystemConfiguration.framework in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
@@ -571,6 +592,13 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C14011362077866A004B8D3E /* CFNetwork.framework */,
+				C14011342077864E004B8D3E /* Security.framework */,
+				C14011322077861A004B8D3E /* libz.tbd */,
+				C14011302077860F004B8D3E /* libc++.tbd */,
+				C140112E20778604004B8D3E /* libsqlite3.0.tbd */,
+				C140112C207785F3004B8D3E /* CoreTelephony.framework */,
+				C140112A207785EA004B8D3E /* SystemConfiguration.framework */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
 			);
 			name = Frameworks;
@@ -1458,7 +1486,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.meiguwiki-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.meiguwiki-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -1496,7 +1524,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.meiguwiki-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.meiguwiki-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
