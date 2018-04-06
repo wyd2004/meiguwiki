@@ -9,6 +9,7 @@ export const topTabNavigatorConfig: TabNavigatorConfig = {
   tabBarPosition: 'top',
   swipeEnabled: true,
   animationEnabled: true,
+  lazy: false,
   tabBarOptions: {
     activeTintColor: colors.mainTextColorOnDarkBg,
     inactiveTintColor: colors.accessoryTextColorOnDarkBg,

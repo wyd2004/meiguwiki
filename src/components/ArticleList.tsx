@@ -10,6 +10,7 @@ import {
   View,
   ViewStyle
 } from 'react-native'
+import Toast from 'react-native-root-toast'
 import EntypoIcon from 'react-native-vector-icons/Entypo'
 import FeatherIcon from 'react-native-vector-icons/Feather'
 import {
@@ -142,7 +143,11 @@ export function createArticleList<NavigationOptions = never> (
     forum: ForumHandler
     async componentWillMount () {
       this.forum = store.forumStore.openForum(fid)
-      await this.forum.loadMoreArticles(true)
+      try {
+        await this.forum.loadMoreArticles(true)
+      } catch (e) {
+        // ignore
+      }
     }
     componentWillUnmount () {
       this.forum.destroy()
@@ -164,10 +169,18 @@ export function createArticleList<NavigationOptions = never> (
       return <View style={this.props.jumpMode ? styles.listShorterSeparator : styles.listSeparator} />
     }
     onHeaderRefresh = async refreshState => {
-      await this.forum.loadMoreArticles(true)
+      try {
+        await this.forum.loadMoreArticles(true)
+      } catch (e) {
+        Toast.show(`刷新失败${e instanceof Error ? `\n${e.message}` : ''}`)
+      }
     }
     onFooterRefresh = async refreshState => {
-      await this.forum.loadMoreArticles()
+      try {
+        await this.forum.loadMoreArticles()
+      } catch (e) {
+        Toast.show(`加载失败${e instanceof Error ? `\n${e.message}` : ''}`)
+      }
     }
     render () {
       const forum = store.forumStore.forums[fid]

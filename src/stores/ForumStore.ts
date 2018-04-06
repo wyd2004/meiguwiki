@@ -38,10 +38,10 @@ export class ForumHandler {
     if (forum.refreshState === RefreshState.NoMoreData && !refresh) return
     const isRefresh = forum.page === -1
     forum.refreshState = isRefresh ? RefreshState.HeaderRefreshing : RefreshState.FooterRefreshing
-    forum.page++
     try {
-      const res = await axios.get(`tasks/${this.fid}/${forum.page * 10}`)
+      const res = await axios.get(`tasks/${this.fid}/${(forum.page + 1) * 10}`)
       runInAction(() => {
+        forum.page++
         forum.refreshState = res.data.tasks.length <= 0 ? RefreshState.NoMoreData : RefreshState.Idle
         if (isRefresh) forum.articles = []
         for (const article of res.data.tasks) {
