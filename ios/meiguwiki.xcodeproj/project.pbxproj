@@ -1417,7 +1417,7 @@
 				CODE_SIGN_ENTITLEMENTS = meiguwiki/meiguwiki.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 7TFRV2277K;
 				HEADER_SEARCH_PATHS = (
@@ -1446,7 +1446,7 @@
 				CODE_SIGN_ENTITLEMENTS = meiguwiki/meiguwiki.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 7TFRV2277K;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0"></a>
+# [1.0.0](https://git.coding.net/yandb/meiguwiki/compare/v0.3.0...v1.0.0) (2018-04-08)
+
+
+### Features
+
+* 启用推送能力 ([c77597c](https://git.coding.net/yandb/meiguwiki/commits/c77597c))
+* 实现分享到微信功能 ([d5d4929](https://git.coding.net/yandb/meiguwiki/commits/d5d4929))
+* 新增应用图标、启动屏 ([0ff72dd](https://git.coding.net/yandb/meiguwiki/commits/0ff72dd))
+* 更换包名为 com.meiguwiki.app ([ad53843](https://git.coding.net/yandb/meiguwiki/commits/ad53843))
+* 补全“导航”-“区块链”栏目下的内容 ([a3658aa](https://git.coding.net/yandb/meiguwiki/commits/a3658aa))
+
+
+### BREAKING CHANGES
+
+* 除“关于”页的链接尚未确定外，其余已经完成，待发布
+
+
+
 <a name="0.3.0"></a>
 # [0.3.0](https://git.coding.net/yandb/meiguwiki/compare/v0.2.0...v0.3.0) (2018-04-06)
 
