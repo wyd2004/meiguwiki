@@ -56,6 +56,7 @@
 		C14011332077861A004B8D3E /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C14011322077861A004B8D3E /* libz.tbd */; };
 		C14011352077864F004B8D3E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14011342077864E004B8D3E /* Security.framework */; };
 		C14011372077866A004B8D3E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14011362077866A004B8D3E /* CFNetwork.framework */; };
+		C1539C27207A09C9007CC21B /* launch-screen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1539BFE207A09C9007CC21B /* launch-screen.jpg */; };
 		CD16CFA8310F42A5BBB14A05 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 460914A3CABE45F3B9836CE5 /* MaterialIcons.ttf */; };
 /* End PBXBuildFile section */
 
@@ -400,6 +401,7 @@
 		C14011322077861A004B8D3E /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		C14011342077864E004B8D3E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		C14011362077866A004B8D3E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		C1539BFE207A09C9007CC21B /* launch-screen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "launch-screen.jpg"; sourceTree = "<group>"; };
 		C2FCE0A4A08A4AB0B4760462 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		CA59547CDDA840FBB8E8A8EB /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
 		D590075CD7ED44E6AE48FF28 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
@@ -560,6 +562,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				C1539BFE207A09C9007CC21B /* launch-screen.jpg */,
 			);
 			name = meiguwiki;
 			sourceTree = "<group>";
@@ -1221,6 +1224,7 @@
 				A88F1A89103C41B39FD5E719 /* Ionicons.ttf in Resources */,
 				89E6D46DF9194B9A8B975907 /* MaterialCommunityIcons.ttf in Resources */,
 				CD16CFA8310F42A5BBB14A05 /* MaterialIcons.ttf in Resources */,
+				C1539C27207A09C9007CC21B /* launch-screen.jpg in Resources */,
 				4B93864820DB448096407198 /* Octicons.ttf in Resources */,
 				A2DC3A14901543B38F278649 /* SimpleLineIcons.ttf in Resources */,
 				A16D4CF149B44801A11B4763 /* Zocial.ttf in Resources */,
