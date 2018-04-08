@@ -26,7 +26,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.meiguwiki.urlscheme</string>
+			<string>com.meiguwiki.app.urlscheme</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>meiguwiki</string>
@@ -36,7 +36,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.meiguwiki.wechat</string>
+			<string>com.meiguwiki.app.wechat</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>wx9b1808526a5e33f2</string>

@@ -1,4 +1,4 @@
-package com.meiguwiki.wxapi;
+package com.meiguwiki.app.wxapi;
 
 import android.app.Activity;
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package com.meiguwiki;
+package com.meiguwiki.app;
 
 import android.app.Application;
 
