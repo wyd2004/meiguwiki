@@ -151,7 +151,106 @@ const TopTabNavigator = TabNavigator({
     path: 'us-stock'
   },
   Blockchain: {
-    screen: createForumList('区块链', []),
+    screen: createForumList('区块链', [{
+      fid: 33,
+      name: '以太坊'
+    }, {
+      fid: 40,
+      name: '内容版权'
+    }, {
+      fid: 39,
+      name: '资产交易'
+    }, {
+      fid: 35,
+      name: '协会'
+    }, {
+      fid: 36,
+      name: '创业投资'
+    }, {
+      fid: 38,
+      name: '峰会'
+    }, {
+      fid: 34,
+      name: '基础设施'
+    }, {
+      fid: 41,
+      name: '公正防伪'
+    }, {
+      fid: 42,
+      name: '学院'
+    }, {
+      fid: 43,
+      name: '数字货币'
+    }, {
+      fid: 44,
+      name: 'PoS'
+    }, {
+      fid: 45,
+      name: '比特币入门'
+    }, {
+      fid: 46,
+      name: 'PoW'
+    }, {
+      fid: 47,
+      name: '以太坊入门'
+    }, {
+      fid: 48,
+      name: 'DPoS'
+    }, {
+      fid: 49,
+      name: '资讯'
+    }, {
+      fid: 50,
+      name: '微博'
+    }, {
+      fid: 51,
+      name: '专家'
+    }, {
+      fid: 52,
+      name: '媒体'
+    }, {
+      fid: 53,
+      name: '社区'
+    }, {
+      fid: 54,
+      name: '交易平台'
+    }, {
+      fid: 55,
+      name: '区块查询'
+    }, {
+      fid: 56,
+      name: '投资'
+    }, {
+      fid: 57,
+      name: '行情'
+    }, {
+      fid: 58,
+      name: '基金'
+    }, {
+      fid: 59,
+      name: 'ATM'
+    }, {
+      fid: 60,
+      name: '钱包'
+    }, {
+      fid: 63,
+      name: '支付'
+    }, {
+      fid: 67,
+      name: '挖矿'
+    }, {
+      fid: 68,
+      name: '矿池'
+    }, {
+      fid: 69,
+      name: '云算力'
+    }, {
+      fid: 70,
+      name: '矿机'
+    }, {
+      fid: 72,
+      name: '收益计算'
+    }]),
     path: 'blockchain'
   }
 }, topTabNavigatorConfig)
