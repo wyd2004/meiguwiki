@@ -1,6 +1,7 @@
 import * as React from 'react'
 import {
   FlatList,
+  Image,
   ImageStyle,
   Linking,
   ListRenderItem,
@@ -14,7 +15,6 @@ import {
 } from 'react-native'
 import EntypoIcon from 'react-native-vector-icons/Entypo'
 import FAIcon from 'react-native-vector-icons/FontAwesome'
-import IoniconsIcon from 'react-native-vector-icons/Ionicons'
 import { NavigationScreenConfig, NavigationTabScreenOptions } from 'react-navigation'
 import * as colors from '../colors'
 
@@ -41,14 +41,26 @@ const styles = StyleSheet.create({
     height: 1,
     backgroundColor: colors.listSeparatorColor
   } as ViewStyle,
-  appIcon: {
-    marginBottom: 15
+  appLogoContainer: {
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowColor: '#000',
+    shadowOpacity: 0.2,
+    shadowRadius: 3
+  } as ViewStyle,
+  appLogo: {
+    width: 70,
+    height: 70,
+    borderRadius: 12
   } as ImageStyle,
   appTitle: {
     color: colors.mainTextColorOnLightBg,
     fontSize: 20,
     fontWeight: 'bold',
-    marginBottom: 13
+    marginTop: 20,
+    marginBottom: 15
   } as TextStyle,
   appDescription: {
     color: colors.accessoryTextColorOnLightBg,
@@ -119,12 +131,9 @@ export class About extends React.Component {
         <FlatList
           style={styles.list}
           ListHeaderComponent={<View style={styles.listHeader}>
-              <IoniconsIcon
-                style={styles.appIcon}
-                name="ios-appstore-outline"
-                size={70}
-                color={colors.highlightTextColor}
-              />
+              <View style={styles.appLogoContainer}>
+                <Image source={require('../images/app-logo.png')} style={styles.appLogo} />
+              </View>
               <Text style={styles.appTitle}>美股维基百科</Text>
               <Text style={styles.appDescription}>最懂区块链的美股平台</Text>
               <Text style={styles.appDescription}>精心荟萃全方位的资讯和文章</Text>

@@ -1,3 +1,5 @@
+import { observable, runInAction } from 'mobx'
+import { observer } from 'mobx-react'
 import * as React from 'react'
 import {
   Clipboard,
@@ -59,21 +61,46 @@ export interface IModalShareNavParams {
   article: IArticle
 }
 
+@observer
 export class ModalShare extends React.Component<NavigationScreenProps<IModalShareNavParams>> {
+  @observable isWeChatInstalled = false
+  async componentDidMount () {
+    const isWeChatInstalled = await WeChat.isWXAppInstalled()
+    runInAction(() => {
+      this.isWeChatInstalled = isWeChatInstalled
+    })
+  }
+  shareToWeChat = async (target: 'session' | 'timeline') => {
+    const { subject, url } = this.props.navigation.state.params.article
+    const shareOptions = {
+      type: 'news',
+      title: subject,
+      webpageUrl: url
+    }
+    try {
+      switch (target) {
+        case 'session':
+          await WeChat.shareToSession(shareOptions)
+          break
+        case 'timeline':
+          await WeChat.shareToTimeline(shareOptions)
+          break
+        default:
+          break
+      }
+      Toast.show('分享成功')
+    } catch (e) {
+      Toast.show('分享已取消')
+    }
+  }
   onBackPress = () => {
     this.props.navigation.goBack()
   }
-  onShareToWeChatPress = async () => {
-    await WeChat.shareToTimeline({
-      type: 'text',
-      description: 'hello, wechat'
-    })
+  onShareToWeChatSessionPress = async () => {
+    await this.shareToWeChat('session')
   }
-  onShareToWeChatMomentsPress = async () => {
-    await WeChat.shareToSession({
-      type: 'text',
-      description: 'hello, wechat'
-    })
+  onShareToWeChatTimelinePress = async () => {
+    await this.shareToWeChat('timeline')
   }
   onCopyLinkPress = () => {
     Clipboard.setString(this.props.navigation.state.params.article.url)
@@ -86,14 +113,18 @@ export class ModalShare extends React.Component<NavigationScreenProps<IModalShar
         <View style={styles.container}>
           <Text style={styles.largeText}>分享到</Text>
           <View style={styles.shareButtonContainer}>
-            <TouchableOpacity style={styles.shareButton} onPress={this.onShareToWeChatPress}>
-              <Image style={styles.shareButtonImage} source={require('../images/share-icon-wechat.png')} />
-              <Text style={styles.shareButtonText}>微信好友</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.shareButton} onPress={this.onShareToWeChatMomentsPress}>
-              <Image style={styles.shareButtonImage} source={require('../images/share-icon-wechat-moments.png')} />
-              <Text style={styles.shareButtonText}>朋友圈</Text>
-            </TouchableOpacity>
+            {this.isWeChatInstalled &&
+              <TouchableOpacity style={[styles.shareButton]} onPress={this.onShareToWeChatSessionPress}>
+                <Image style={styles.shareButtonImage} source={require('../images/share-icon-wechat-session.png')} />
+                <Text style={styles.shareButtonText}>微信好友</Text>
+              </TouchableOpacity>
+            }
+            {this.isWeChatInstalled &&
+              <TouchableOpacity style={styles.shareButton} onPress={this.onShareToWeChatTimelinePress}>
+                <Image style={styles.shareButtonImage} source={require('../images/share-icon-wechat-timeline.png')} />
+                <Text style={styles.shareButtonText}>朋友圈</Text>
+              </TouchableOpacity>
+            }
             <TouchableOpacity style={styles.shareButton} onPress={this.onCopyLinkPress}>
               <Image style={styles.shareButtonImage} source={require('../images/share-icon-copy-link.png')} />
               <Text style={styles.shareButtonText}>复制链接</Text>

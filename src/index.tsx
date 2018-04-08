@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { configure } from 'mobx'
+import * as mobx from 'mobx'
 import * as React from 'react'
 import {
   AppRegistry,
@@ -13,19 +13,12 @@ import { apiBaseUrl, weChatAppId } from './config'
 import { RootStackNavigator } from './route'
 
 axios.defaults.baseURL = apiBaseUrl
-configure({ enforceActions: true })
+mobx.configure({ enforceActions: true })
 const uriPrefix = Platform.OS === 'android' ? 'meiguwiki://app/' : 'meiguwiki://'
 
 export class App extends React.Component {
   async componentDidMount () {
-    const registerResult = await WeChat.registerApp(weChatAppId)
-    console.log({
-      registerResult,
-      isWXAppInstalled: await WeChat.isWXAppInstalled(),
-      isWXAppSupportApi: await WeChat.isWXAppSupportApi(),
-      apiVersion: await WeChat.getApiVersion(),
-      wxAppInstallUrl: await WeChat.getWXAppInstallUrl()
-    })
+    await WeChat.registerApp(weChatAppId)
   }
   render () {
     return (
