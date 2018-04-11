@@ -128,6 +128,8 @@ interface IArticleListProps extends NavigationScreenProps {
    * @memberof IArticleListProps
    */
   jumpMode?: boolean
+
+  ListHeaderComponent?: JSX.Element
 }
 
 export function createArticleList<NavigationOptions = never> (
@@ -191,6 +193,7 @@ export function createArticleList<NavigationOptions = never> (
           extraData={forum.lastUpdateId}
           keyExtractor={this.listKeyExtractor}
           renderItem={this.renderListItem}
+          ListHeaderComponent={this.props.ListHeaderComponent}
           ItemSeparatorComponent={this.renderListSeparator}
           refreshState={forum.refreshState}
           onHeaderRefresh={this.onHeaderRefresh}
