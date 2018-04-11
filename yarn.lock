@@ -428,9 +428,15 @@
     "@types/react" "*"
     "@types/react-native" "*"
 
-"@types/react-native@*", "@types/react-native@^0.52.23":
+"@types/react-native@*":
   version "0.52.24"
   resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.52.24.tgz#31b4eb0f6422f53538332f0bac41a6dde9a26df0"
+  dependencies:
+    "@types/react" "*"
+
+"@types/react-native@^0.52.23":
+  version "0.52.25"
+  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.52.25.tgz#78c0e6049d4dc0a7af7d4024baac28ae922bedaf"
   dependencies:
     "@types/react" "*"
 
@@ -442,8 +448,8 @@
     "@types/react-native" "*"
 
 "@types/react@*", "@types/react@^16.3.5":
-  version "16.3.5"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.3.5.tgz#bd3b21285602ea7cadb4b9e0d9711d96fd5692cc"
+  version "16.3.8"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.3.8.tgz#40c7e4eca3f48783e4c4ccee26fc7f5a5a476d84"
   dependencies:
     csstype "^2.0.0"
 
@@ -5142,6 +5148,10 @@ react-native-safe-area-view@^0.7.0:
   dependencies:
     hoist-non-react-statics "^2.3.1"
 
+react-native-splash-screen@^3.0.6:
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/react-native-splash-screen/-/react-native-splash-screen-3.0.6.tgz#c0bbf2c8ae40a313c4c7044f55e569414ff68332"
+
 "react-native-tab-view@github:react-navigation/react-native-tab-view":
   version "0.0.74"
   resolved "https://codeload.github.com/react-navigation/react-native-tab-view/tar.gz/36ebd834d78b841fc19778c966465d02fd1213bb"
@@ -5186,9 +5196,9 @@ react-native-wechat@^1.9.9:
   dependencies:
     events "1.0.2"
 
-react-native@0.55.1:
-  version "0.55.1"
-  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.55.1.tgz#0ca06b3e1bcb8ddfb56b916a3853d423f9ee6439"
+react-native@0.55.2:
+  version "0.55.2"
+  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.55.2.tgz#80d26a3f4193ebd1fd49a4859011c501b0ca3bab"
   dependencies:
     absolute-path "^0.0.0"
     art "^0.10.0"
@@ -6121,6 +6131,10 @@ text-extensions@^1.0.0:
 text-table@~0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
+
+textversionjs@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/textversionjs/-/textversionjs-1.0.2.tgz#1061b9bf613eb07ae6b67301c57a3976b82c280a"
 
 throat@^4.0.0, throat@^4.1.0:
   version "4.1.0"
