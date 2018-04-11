@@ -6132,6 +6132,10 @@ text-table@~0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
 
+textversionjs@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/textversionjs/-/textversionjs-1.0.2.tgz#1061b9bf613eb07ae6b67301c57a3976b82c280a"
+
 throat@^4.0.0, throat@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/throat/-/throat-4.1.0.tgz#89037cbc92c56ab18926e6ba4cbb200e15672a6a"

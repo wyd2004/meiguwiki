@@ -1,3 +1,4 @@
+import textVersion from 'textversionjs'
 import { observable, runInAction } from 'mobx'
 import { observer } from 'mobx-react'
 import * as React from 'react'
@@ -106,6 +107,19 @@ export class ModalShare extends React.Component<NavigationScreenProps<IModalShar
     Clipboard.setString(this.props.navigation.state.params.article.url)
     Toast.show('已复制链接')
   }
+  onCopyContentPress = () => {
+    const message = this.props.navigation.state.params.article.message.replace(/<\/?br\/?>/g, '<br>')
+    console.log(message)
+    const text = `${textVersion(message, {
+      linkProcess: (href, linkText) => linkText,
+      imgProcess: () => '',
+      headingStyle: 'hashify',
+      keepNbsps: true
+    }).trim()}\n\n- 来自美股维基百科 App`
+    console.log(text)
+    Clipboard.setString(text)
+    Toast.show('已复制内容')
+  }
   render () {
     return (
       <View style={StyleSheet.absoluteFill}>
@@ -128,6 +142,10 @@ export class ModalShare extends React.Component<NavigationScreenProps<IModalShar
             <TouchableOpacity style={styles.shareButton} onPress={this.onCopyLinkPress}>
               <Image style={styles.shareButtonImage} source={require('../images/share-icon-copy-link.png')} />
               <Text style={styles.shareButtonText}>复制链接</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.shareButton} onPress={this.onCopyContentPress}>
+              <Image style={styles.shareButtonImage} source={require('../images/share-icon-copy-link.png')} />
+              <Text style={styles.shareButtonText}>复制文字</Text>
             </TouchableOpacity>
           </View>
           <TouchableOpacity style={styles.backButton} onPress={this.onBackPress}>
