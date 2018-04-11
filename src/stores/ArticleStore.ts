@@ -6,6 +6,7 @@ export interface IArticle {
   fid?: number
   userName?: string
   subject?: string
+  abstract?: string
   message?: string
   timestamp?: number
   views?: number
@@ -40,6 +41,7 @@ export class ArticleHandler {
       set(article, {
         tid: msg.tid,
         userName: msg.username,
+        abstract: msg.abstract,
         subject: msg.subject.trim(),
         message: msg.message,
         timestamp: msg.last_date,

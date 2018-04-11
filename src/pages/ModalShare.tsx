@@ -72,10 +72,11 @@ export class ModalShare extends React.Component<NavigationScreenProps<IModalShar
     })
   }
   shareToWeChat = async (target: 'session' | 'timeline') => {
-    const { subject, url } = this.props.navigation.state.params.article
+    const { subject, abstract, url } = this.props.navigation.state.params.article
     const shareOptions = {
       type: 'news',
       title: subject,
+      description: abstract,
       webpageUrl: url
     }
     try {
