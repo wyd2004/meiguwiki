@@ -23,15 +23,19 @@ export class ArticleHandler {
       store.articleRefCount[tid]++
     } else {
       store.articleRefCount[tid] = 1
-      set(this.store.articles, this.tid.toString(), { tid } as IArticle)
+      if (!this.get()) {
+        set(this.store.articles, this.tid.toString(), { tid } as IArticle)
+      }
     }
   }
   @action async load (stubArticle?: IArticle) {
     const article = this.get()
     if (stubArticle) set(article, stubArticle)
-    set(article, {
-      loading: true
-    } as IArticle)
+    if (!article.message) {
+      set(article, {
+        loading: true
+      } as IArticle)
+    }
     const res = await axios.get(`msg/${this.tid}`)
     runInAction(() => {
       if (res.data.messages.length <= 0) {
@@ -57,7 +61,7 @@ export class ArticleHandler {
     this.store.articleRefCount[this.tid]--
     if (this.store.articleRefCount[this.tid] <= 0) {
       delete this.store.articleRefCount[this.tid]
-      remove(this.store.articles, this.tid.toString())
+      // 缓存文章，不真正删除
     }
   }
 }
