@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.0"></a>
+# [1.1.0](https://git.coding.net/yandb/meiguwiki/compare/v1.0.0...v1.1.0) (2018-04-11)
+
+
+### Features
+
+* “关于”Tab 对接 API 接口 ([d9b52dd](https://git.coding.net/yandb/meiguwiki/commits/d9b52dd))
+* “分享”新增复制文字操作（图标待定） ([68fe143](https://git.coding.net/yandb/meiguwiki/commits/68fe143))
+* API 接口使用域名请求 ([5ead5d2](https://git.coding.net/yandb/meiguwiki/commits/5ead5d2))
+* 分享到微信时显示摘要 ([b2a4e50](https://git.coding.net/yandb/meiguwiki/commits/b2a4e50))
+* 延长启动屏显示时间，避免刚启动后的空白 ([a6b8dc2](https://git.coding.net/yandb/meiguwiki/commits/a6b8dc2))
+* 打开过的文章重新打开时先展示上次的文章，再静默更新 ([d260f91](https://git.coding.net/yandb/meiguwiki/commits/d260f91))
+
+
+
 <a name="1.0.0"></a>
 # [1.0.0](https://git.coding.net/yandb/meiguwiki/compare/v0.3.0...v1.0.0) (2018-04-08)
 
