@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { action, observable, remove, runInAction, set } from 'mobx'
+import { action, observable, runInAction, set } from 'mobx'
 
 export interface IArticle {
   tid?: number
@@ -8,6 +8,7 @@ export interface IArticle {
   subject?: string
   abstract?: string
   message?: string
+  copyText?: string
   timestamp?: number
   views?: number
   loading?: boolean
@@ -48,6 +49,7 @@ export class ArticleHandler {
         abstract: msg.abstract,
         subject: msg.subject.trim(),
         message: msg.message,
+        copyText: msg.copytxt,
         timestamp: msg.last_date,
         url: msg.url,
         loading: false

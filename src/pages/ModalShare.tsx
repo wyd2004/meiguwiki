@@ -1,4 +1,3 @@
-import textVersion from 'textversionjs'
 import { observable, runInAction } from 'mobx'
 import { observer } from 'mobx-react'
 import * as React from 'react'
@@ -109,16 +108,7 @@ export class ModalShare extends React.Component<NavigationScreenProps<IModalShar
     Toast.show('已复制链接')
   }
   onCopyContentPress = () => {
-    const message = this.props.navigation.state.params.article.message.replace(/<\/?br\/?>/g, '<br>')
-    console.log(message)
-    const text = `${textVersion(message, {
-      linkProcess: (href, linkText) => linkText,
-      imgProcess: () => '',
-      headingStyle: 'hashify',
-      keepNbsps: true
-    }).trim()}\n\n- 来自美股维基百科 App`
-    console.log(text)
-    Clipboard.setString(text)
+    Clipboard.setString(this.props.navigation.state.params.article.copyText)
     Toast.show('已复制内容')
   }
   render () {
