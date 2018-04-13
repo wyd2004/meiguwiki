@@ -14,6 +14,7 @@ import {
 } from 'react-native'
 import Toast from 'react-native-root-toast'
 import * as WeChat from 'react-native-wechat'
+import resolveAssetSource from 'react-native/Libraries/Image/resolveAssetSource'
 import { NavigationScreenProps } from 'react-navigation'
 import * as colors from '../colors'
 import { IArticle } from '../stores/ArticleStore'
@@ -76,6 +77,7 @@ export class ModalShare extends React.Component<NavigationScreenProps<IModalShar
       type: 'news',
       title: subject,
       description: abstract,
+      thumbImage: resolveAssetSource(require('../images/app-logo.png')).uri,
       webpageUrl: url
     }
     try {
