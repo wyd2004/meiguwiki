@@ -135,7 +135,7 @@ export class ModalShare extends React.Component<NavigationScreenProps<IModalShar
               <Text style={styles.shareButtonText}>复制链接</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.shareButton} onPress={this.onCopyContentPress}>
-              <Image style={styles.shareButtonImage} source={require('../images/share-icon-copy-link.png')} />
+              <Image style={styles.shareButtonImage} source={require('../images/share-icon-copy-content.png')} />
               <Text style={styles.shareButtonText}>复制文字</Text>
             </TouchableOpacity>
           </View>
