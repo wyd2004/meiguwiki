@@ -136,6 +136,8 @@ interface IArticleListProps extends NavigationScreenProps {
 
 export function createArticleList<NavigationOptions = never> (
   fid: number,
+  // FlatList 存在 bug 导致 RefreshControl 首次显示定位有问题，如遇到此问题请将该选项设为 true
+  fixRefreshControlBug = false,
   navigationOptions?: NavigationScreenConfig<NavigationOptions>
 ) {
   @observer
@@ -151,7 +153,7 @@ export function createArticleList<NavigationOptions = never> (
     }
     async componentDidMount () {
       try {
-        await this.forum.loadMoreArticles(true)
+        await this.forum.loadMoreArticles(true, fixRefreshControlBug)
       } catch (e) {
         // ignore
       }
