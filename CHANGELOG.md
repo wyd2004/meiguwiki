@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.0"></a>
+# [1.2.0](https://git.coding.net/yandb/meiguwiki/compare/v1.1.0...v1.2.0) (2018-04-13)
+
+
+### Bug Fixes
+
+* 修复文章列表首屏加载时不显示刷新指示器问题 ([ac893ed](https://git.coding.net/yandb/meiguwiki/commits/ac893ed))
+
+
+### Features
+
+* 分享到微信朋友圈时缩略图显示应用图标 ([6f9e608](https://git.coding.net/yandb/meiguwiki/commits/6f9e608))
+* 复制文章内容改用 API 提供的文本 ([7f2712f](https://git.coding.net/yandb/meiguwiki/commits/7f2712f))
+* 新增内置浏览器用以在应用内打开网页 ([8c9bd19](https://git.coding.net/yandb/meiguwiki/commits/8c9bd19))
+* 更新“复制文字”图标 ([8ef6541](https://git.coding.net/yandb/meiguwiki/commits/8ef6541))
+* 更新启动屏幕图片 ([0cf46b3](https://git.coding.net/yandb/meiguwiki/commits/0cf46b3))
+
+
+
 <a name="1.1.0"></a>
 # [1.1.0](https://git.coding.net/yandb/meiguwiki/compare/v1.0.0...v1.1.0) (2018-04-11)
 
