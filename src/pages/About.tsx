@@ -60,7 +60,7 @@ export class About extends React.Component<NavigationScreenProps> {
   }
   render () {
     // tslint:disable-next-line:variable-name
-    const ArticleList = createArticleList(7)
+    const ArticleList = createArticleList(7, true)
     return (
       <SafeAreaView style={styles.container}>
         <ArticleList

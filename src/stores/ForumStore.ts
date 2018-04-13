@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { action, observable, remove, runInAction, set } from 'mobx'
+import { Platform } from 'react-native'
 import uuidv4 from 'uuid/v4'
 import { RefreshState } from '../components/RefreshListView'
 import { IArticle } from './ArticleStore'
@@ -24,7 +25,10 @@ export class ForumHandler {
       set(this.store.forums, this.fid.toString(), this.emptyForum())
     }
   }
-  @action async loadMoreArticles (refresh = false) {
+  // delaySetLoading: FlatList 存在 bug 导致 RefreshControl 首次显示定位有问题，等待片刻完成布局后再设置刷新状态
+  @action async loadMoreArticles (refresh = false, delaySetLoading = false) {
+    // tslint:disable-next-line:no-parameter-reassignment
+    if (Platform.OS !== 'ios') delaySetLoading = false
     let forum = this.get()
     if (refresh) {
       forum = observable.object({
@@ -37,11 +41,22 @@ export class ForumHandler {
     if (forum.refreshState === RefreshState.FooterRefreshing && !refresh) return
     if (forum.refreshState === RefreshState.NoMoreData && !refresh) return
     const isRefresh = forum.page === -1
-    forum.refreshState = isRefresh ? RefreshState.HeaderRefreshing : RefreshState.FooterRefreshing
+    const newRefreshState = isRefresh ? RefreshState.HeaderRefreshing : RefreshState.FooterRefreshing
+    let delaySetLoadingTimer: number
+    if (delaySetLoading) {
+      delaySetLoadingTimer = setTimeout(() => {
+        runInAction(() => {
+          forum.refreshState = newRefreshState
+        })
+      }, 250)
+    } else {
+      forum.refreshState = newRefreshState
+    }
     try {
       const res = await axios.get(`tasks/${this.fid}/${(forum.page + 1) * 10}`)
       runInAction(() => {
         forum.page++
+        if (delaySetLoading) clearTimeout(delaySetLoadingTimer)
         forum.refreshState = res.data.tasks.length <= 0 ? RefreshState.NoMoreData : RefreshState.Idle
         if (isRefresh) forum.articles = []
         for (const article of res.data.tasks) {
@@ -59,6 +74,7 @@ export class ForumHandler {
       })
     } catch (e) {
       runInAction(() => {
+        if (delaySetLoading) clearTimeout(delaySetLoadingTimer)
         forum.refreshState = RefreshState.Failure
         throw e
       })
@@ -74,7 +90,7 @@ export class ForumHandler {
       remove(this.store.forums, this.fid.toString())
     }
   }
-  private emptyForum () {
+  private emptyForum (): IForum {
     return {
       fid: this.fid,
       page: -1,

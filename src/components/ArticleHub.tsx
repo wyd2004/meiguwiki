@@ -36,7 +36,7 @@ export function createArticleHub<NavigationOptions = never> (hubConfig: IArticle
   const routeConfigMap: NavigationRouteConfigMap = {}
   for (const forum of hubConfig.forums) {
     routeConfigMap[forum.routeName] = {
-      screen: createArticleList(forum.fid, {
+      screen: createArticleList(forum.fid, true, {
         title: forum.label
       } as NavigationTabScreenOptions),
       path: forum.path

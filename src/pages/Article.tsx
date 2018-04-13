@@ -2,6 +2,7 @@ import { observer } from 'mobx-react'
 import * as React from 'react'
 import {
   Alert,
+  Dimensions,
   ScrollView,
   StyleSheet,
   Text,
@@ -81,8 +82,13 @@ interface IArticleProps extends NavigationScreenProps<IArticleNavParams> {}
 
 @observer
 export class Article extends React.Component<IArticleProps> {
-  unmounted = true
+  unmounted = false
   article: ArticleHandler
+  constructor (props: IArticleProps) {
+    super(props)
+    const { tid } = this.props.navigation.state.params
+    this.article = store.articleStore.openArticle(tid)
+  }
   static navigationOptions: NavigationScreenConfig<NavigationStackScreenOptions> = ({ navigation }) => {
     const params = navigation.state.params as IArticleNavParams
     return {
@@ -96,11 +102,9 @@ export class Article extends React.Component<IArticleProps> {
       )
     }
   }
-  async componentWillMount () {
-    this.unmounted = false
+  async componentDidMount () {
     try {
-      const { tid, stubArticle } = this.props.navigation.state.params
-      this.article = store.articleStore.openArticle(tid)
+      const { stubArticle } = this.props.navigation.state.params
       await this.article.load(stubArticle)
       this.props.navigation.setParams({
         ...this.props.navigation.state.params,
@@ -109,7 +113,8 @@ export class Article extends React.Component<IArticleProps> {
     } catch (e) {
       if (this.unmounted) return
       Alert.alert('加载失败', e instanceof Error ? e.message : '文章加载失败', [{
-        text: '返回', onPress: () => this.props.navigation.goBack()
+        // tslint:disable-next-line:no-null-keyword
+        text: '返回', onPress: () => this.props.navigation.goBack(null)
       }], {
         cancelable: false
       })
@@ -176,6 +181,10 @@ export class Article extends React.Component<IArticleProps> {
           <Text style={styles.titleAccessoryText}>{article.userName} {formatTime(article.timestamp)}</Text>
           <View style={styles.separator} />
           {article.message && <EnhancedWebView
+            autoHeight
+            openLinkInNewPage
+            initialHeight={Dimensions.get('window').height * 3}
+            navigation={this.props.navigation}
             style={styles.webView}
             source={{ html: articleHtml, baseUrl: '' }}
           />}
