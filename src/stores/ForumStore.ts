@@ -74,7 +74,7 @@ export class ForumHandler {
       remove(this.store.forums, this.fid.toString())
     }
   }
-  private emptyForum () {
+  private emptyForum (): IForum {
     return {
       fid: this.fid,
       page: -1,

@@ -25,7 +25,7 @@ export class ArticleHandler {
     } else {
       store.articleRefCount[tid] = 1
       if (!this.get()) {
-        set(this.store.articles, this.tid.toString(), { tid } as IArticle)
+        set(this.store.articles, this.tid.toString(), this.emptyArticle())
       }
     }
   }
@@ -64,6 +64,21 @@ export class ArticleHandler {
     if (this.store.articleRefCount[this.tid] <= 0) {
       delete this.store.articleRefCount[this.tid]
       // 缓存文章，不真正删除
+    }
+  }
+  private emptyArticle (): IArticle {
+    return {
+      tid: this.tid,
+      fid: undefined,
+      userName: undefined,
+      subject: undefined,
+      abstract: undefined,
+      message: undefined,
+      copyText: undefined,
+      timestamp: undefined,
+      views: undefined,
+      loading: false,
+      url: undefined
     }
   }
 }
