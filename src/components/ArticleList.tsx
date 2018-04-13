@@ -1,7 +1,6 @@
 import { observer } from 'mobx-react'
 import * as React from 'react'
 import {
-  Linking,
   ListRenderItem,
   StyleSheet,
   Text,
@@ -14,12 +13,14 @@ import Toast from 'react-native-root-toast'
 import EntypoIcon from 'react-native-vector-icons/Entypo'
 import FeatherIcon from 'react-native-vector-icons/Feather'
 import {
+  NavigationActions,
   NavigationScreenConfig,
   NavigationScreenProps
 } from 'react-navigation'
 import * as colors from '../colors'
 import { RefreshListView } from '../components/RefreshListView'
 import { IArticleNavParams } from '../pages/Article'
+import { IWebBrowserNavParams } from '../pages/WebBrowser'
 import { store } from '../stores'
 import { IArticle } from '../stores/ArticleStore'
 import { ForumHandler } from '../stores/ForumStore'
@@ -80,14 +81,15 @@ class ListCell extends React.Component<IArticle & NavigationScreenProps & {
 }> {
   onPress = async () => {
     if (this.props.jumpMode) {
-      if (Linking.canOpenURL(this.props.url)) {
-        await Linking.openURL(this.props.url)
-      }
+      this.props.navigation.navigate('WebBrowser', { url: this.props.url } as IWebBrowserNavParams)
     } else {
-      this.props.navigation.push('Article', {
-        tid: this.props.tid,
-        stubArticle: this.props
-      } as IArticleNavParams)
+      this.props.navigation.navigate('ArticleStack', undefined, NavigationActions.navigate({
+        routeName: 'Article',
+        params: {
+          tid: this.props.tid,
+          stubArticle: this.props
+        } as IArticleNavParams
+      }))
     }
   }
   render () {

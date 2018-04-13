@@ -60,7 +60,7 @@ interface IForum {
 
 class ListCell extends React.Component<IForum & NavigationScreenProps & { odd: boolean }> {
   onPress = async () => {
-    this.props.navigation.push('NavigationLinkList', {
+    this.props.navigation.navigate('NavigationLinkList', {
       fid: this.props.fid,
       forumName: this.props.name
     } as INavigationLinkListNavParams)

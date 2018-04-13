@@ -2,6 +2,7 @@ import { observer } from 'mobx-react'
 import * as React from 'react'
 import {
   Alert,
+  Dimensions,
   ScrollView,
   StyleSheet,
   Text,
@@ -77,10 +78,8 @@ export interface IArticleNavParams {
   fullArticle?: IArticle
 }
 
-interface IArticleProps extends NavigationScreenProps<IArticleNavParams> {}
-
 @observer
-export class Article extends React.Component<IArticleProps> {
+export class Article extends React.Component<NavigationScreenProps<IArticleNavParams>> {
   unmounted = true
   article: ArticleHandler
   static navigationOptions: NavigationScreenConfig<NavigationStackScreenOptions> = ({ navigation }) => {
@@ -109,7 +108,8 @@ export class Article extends React.Component<IArticleProps> {
     } catch (e) {
       if (this.unmounted) return
       Alert.alert('加载失败', e instanceof Error ? e.message : '文章加载失败', [{
-        text: '返回', onPress: () => this.props.navigation.goBack()
+        // tslint:disable-next-line:no-null-keyword
+        text: '返回', onPress: () => this.props.navigation.goBack(null)
       }], {
         cancelable: false
       })
@@ -176,6 +176,10 @@ export class Article extends React.Component<IArticleProps> {
           <Text style={styles.titleAccessoryText}>{article.userName} {formatTime(article.timestamp)}</Text>
           <View style={styles.separator} />
           {article.message && <EnhancedWebView
+            autoHeight
+            openLinkInNewPage
+            initialHeight={Dimensions.get('window').height * 3}
+            navigation={this.props.navigation}
             style={styles.webView}
             source={{ html: articleHtml, baseUrl: '' }}
           />}
