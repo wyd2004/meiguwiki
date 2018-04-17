@@ -77,7 +77,8 @@ export class ModalShare extends React.Component<NavigationScreenProps<IModalShar
       type: 'news',
       title: subject,
       description: abstract,
-      thumbImage: resolveAssetSource(require('../images/app-logo.png')).uri,
+      // TODO: 使用大尺寸图片可能导致拉起微信失败，因此此处使用小尺寸图标
+      thumbImage: resolveAssetSource(require('../images/app-logo-tiny.png')).uri,
       webpageUrl: url
     }
     try {
