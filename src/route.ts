@@ -63,7 +63,10 @@ export const RootStackNavigator = StackNavigator({
     screen: StackNavigator({
       Article: {
         screen: Article,
-        path: ':tid'
+        path: ':tid',
+        navigationOptions: {
+          gesturesEnabled: true
+        }
       },
       ModalShare: {
         screen: ModalShare

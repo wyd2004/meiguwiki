@@ -20,6 +20,6 @@ export class NavigationLinkList extends React.Component<NavigationScreenProps<IN
     const { fid } = this.props.navigation.state.params
     // tslint:disable-next-line:variable-name
     const ArticleList = createArticleList(fid)
-    return <ArticleList navigation={this.props.navigation} jumpMode />
+    return <ArticleList navigation={this.props.navigation} jumpMode="in-app-browser" listMode="simple" />
   }
 }

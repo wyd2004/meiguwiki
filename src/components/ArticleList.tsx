@@ -73,14 +73,18 @@ const styles = StyleSheet.create({
   } as TextStyle
 })
 
+type JumpMode = 'article-page' | 'in-app-browser'
+type ListMode = 'detail' | 'simple'
+
 @observer
 class ListCell extends React.Component<IArticle & NavigationScreenProps & {
-  jumpMode: boolean;
+  jumpMode: JumpMode;
+  listMode: ListMode;
   isFirst: boolean;
   isLast: boolean;
 }> {
   onPress = async () => {
-    if (this.props.jumpMode) {
+    if (this.props.jumpMode === 'in-app-browser') {
       this.props.navigation.navigate('WebBrowser', { url: this.props.url } as IWebBrowserNavParams)
     } else {
       this.props.navigation.navigate('ArticleStack', undefined, NavigationActions.navigate({
@@ -95,7 +99,7 @@ class ListCell extends React.Component<IArticle & NavigationScreenProps & {
   render () {
     const topBorder = this.props.isFirst ? <View style={styles.listSeparator} /> : undefined
     const bottomBorder = this.props.isLast ? <View style={styles.listSeparator} /> : undefined
-    return this.props.jumpMode ? (
+    return this.props.listMode === 'simple' ? (
       <View>
         {topBorder}
         <TouchableOpacity style={styles.listItemRowContainer} onPress={this.onPress}>
@@ -122,21 +126,14 @@ class ListCell extends React.Component<IArticle & NavigationScreenProps & {
 }
 
 interface IArticleListProps extends NavigationScreenProps {
-  /**
-   * 是否启用跳转模式，即点击后用浏览器打开文章 URL
-   *
-   * @default false
-   * @type {boolean}
-   * @memberof IArticleListProps
-   */
-  jumpMode?: boolean
-
+  jumpMode?: JumpMode
+  listMode?: ListMode
   ListHeaderComponent?: JSX.Element
 }
 
 export function createArticleList<NavigationOptions = never> (
   fid: number,
-  // FlatList 存在 bug 导致 RefreshControl 首次显示定位有问题，如遇到此问题请将该选项设为 true
+  // TODO: FlatList 存在 bug 导致 RefreshControl 首次显示定位有问题，如遇到此问题请将该选项设为 true
   fixRefreshControlBug = false,
   navigationOptions?: NavigationScreenConfig<NavigationOptions>
 ) {
@@ -144,7 +141,8 @@ export function createArticleList<NavigationOptions = never> (
   class ArticleList extends React.Component<IArticleListProps> {
     static navigationOptions = navigationOptions
     static defaultProps: Partial<IArticleListProps> = {
-      jumpMode: false
+      jumpMode: 'article-page',
+      listMode: 'detail'
     }
     forum: ForumHandler
     constructor (props: IArticleListProps) {
@@ -168,6 +166,7 @@ export function createArticleList<NavigationOptions = never> (
         <ListCell
           navigation={this.props.navigation}
           jumpMode={this.props.jumpMode}
+          listMode={this.props.listMode}
           isFirst={index === 0}
           isLast={index === articleCount - 1}
           {...item}
