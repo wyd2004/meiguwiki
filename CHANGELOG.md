@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.3.0"></a>
+# [1.3.0](https://git.coding.net/yandb/meiguwiki/compare/v1.2.0...v1.3.0) (2018-04-17)
+
+
+### Bug Fixes
+
+* 修复文章页无法用右滑手势返回问题 ([4ad4ea7](https://git.coding.net/yandb/meiguwiki/commits/4ad4ea7))
+
+
+### Features
+
+* “关于”Tab 下的链接使用文章浏览器打开 ([20ef84a](https://git.coding.net/yandb/meiguwiki/commits/20ef84a))
+* “关于”Tab 显示应用版本号 ([6b1c82a](https://git.coding.net/yandb/meiguwiki/commits/6b1c82a))
+
+
+
 <a name="1.2.0"></a>
 # [1.2.0](https://git.coding.net/yandb/meiguwiki/compare/v1.1.0...v1.2.0) (2018-04-13)
 
