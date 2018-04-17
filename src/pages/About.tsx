@@ -10,6 +10,7 @@ import {
   ViewStyle
 } from 'react-native'
 import FAIcon from 'react-native-vector-icons/FontAwesome'
+import VersionNumber from 'react-native-version-number'
 import { NavigationScreenConfig, NavigationScreenProps, NavigationTabScreenOptions } from 'react-navigation'
 import * as colors from '../colors'
 import { createArticleList } from '../components/ArticleList'
@@ -41,7 +42,12 @@ const styles = StyleSheet.create({
     color: colors.mainTextColorOnLightBg,
     fontSize: 20,
     fontWeight: 'bold',
-    marginTop: 20,
+    marginTop: 20
+  } as TextStyle,
+  versionNumber: {
+    color: colors.accessoryTextColorOnLightBg,
+    fontSize: 15,
+    marginTop: 5,
     marginBottom: 15
   } as TextStyle,
   appDescription: {
@@ -72,6 +78,7 @@ export class About extends React.Component<NavigationScreenProps> {
               <Image source={require('../images/app-logo.png')} style={styles.appLogo} />
             </View>
             <Text style={styles.appTitle}>美股维基百科</Text>
+            <Text style={styles.versionNumber}>{VersionNumber.appVersion}</Text>
             <Text style={styles.appDescription}>最懂区块链的美股平台</Text>
             <Text style={styles.appDescription}>精心荟萃全方位的资讯和文章</Text>
             <Text style={styles.appDescription}>一切尽在掌握</Text>

@@ -428,6 +428,10 @@
     "@types/react" "*"
     "@types/react-native" "*"
 
+"@types/react-native-version-number@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@types/react-native-version-number/-/react-native-version-number-0.3.0.tgz#5b2183c1416593a349f797fc409808a575f8b4d5"
+
 "@types/react-native@*":
   version "0.52.24"
   resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.52.24.tgz#31b4eb0f6422f53538332f0bac41a6dde9a26df0"
@@ -5186,6 +5190,10 @@ react-native-vector-icons@^4.6.0:
     lodash "^4.0.0"
     prop-types "^15.5.10"
     yargs "^8.0.2"
+
+react-native-version-number@^0.3.2:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/react-native-version-number/-/react-native-version-number-0.3.2.tgz#ecf15a2e492f94d729674ab9d61d460cd4188cca"
 
 react-native-version@^2.4.1:
   version "2.4.1"
