@@ -65,7 +65,8 @@ export class About extends React.Component<NavigationScreenProps> {
       <SafeAreaView style={styles.container}>
         <ArticleList
           navigation={this.props.navigation}
-          jumpMode
+          jumpMode="article-page"
+          listMode="simple"
           ListHeaderComponent={<View style={styles.listHeader}>
             <View style={styles.appLogoContainer}>
               <Image source={require('../images/app-logo.png')} style={styles.appLogo} />
