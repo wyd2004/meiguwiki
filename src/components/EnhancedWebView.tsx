@@ -8,7 +8,7 @@ import {
   WebViewHtmlSource,
   WebViewIOSLoadRequestEvent,
   WebViewMessageEventData,
-  WebViewProperties
+  WebViewProps
 } from 'react-native'
 import { NavigationScreenProps } from 'react-navigation'
 import { IWebBrowserNavParams } from '../pages/WebBrowser'
@@ -26,7 +26,7 @@ const patchPostMessageFunction = () => {
 }
 const patchPostMessageJsCode = `(${String(patchPostMessageFunction)})()`
 
-interface IEnhancedWebViewProps extends WebViewProperties, NavigationScreenProps {
+interface IEnhancedWebViewProps extends WebViewProps, NavigationScreenProps {
   autoHeight: boolean
   openLinkInNewPage: boolean
   initialHeight?: number

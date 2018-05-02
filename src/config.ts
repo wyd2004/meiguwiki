@@ -24,3 +24,13 @@ export const topTabNavigatorConfig: TabNavigatorConfig = {
     }
   }
 }
+export const xgPushConfig = {
+  ios: {
+    accessId: 2200283597,
+    accessKey: 'IR55FA6V6R8P'
+  },
+  android: {
+    accessId: 2100283598,
+    accessKey: 'A1Q76S9F3CPY'
+  }
+}

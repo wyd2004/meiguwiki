@@ -11,6 +11,7 @@
 #import <React/RCTRootView.h>
 #import <React/RCTLinkingManager.h>
 #import <SplashScreen.h>
+#import <XGPush/XGPushManager.h>
 
 @implementation AppDelegate
 
@@ -42,5 +43,47 @@
                       sourceApplication:sourceApplication annotation:annotation];
 }
 
+// Required to register for notifications
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
+{
+  [XGPushManager didRegisterUserNotificationSettings:notificationSettings];
+}
+
+// Required for the register event.
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+  [XGPushManager didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+}
+
+// Required for the notification event. You must call the completion handler after handling the remote notification.
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+{
+  UIApplicationState state = [application applicationState];
+  BOOL isClicked = (state != UIApplicationStateActive);
+  NSMutableDictionary *remoteNotification = [NSMutableDictionary dictionaryWithDictionary:userInfo];
+  if (isClicked) {
+    remoteNotification[@"clicked"] = @YES;
+  }
+  [XGPushManager didReceiveRemoteNotification:remoteNotification fetchCompletionHandler:completionHandler];
+  // 统计收到推送的设备
+  [XGPushManager handleReceiveNotification:remoteNotification successCallback:^{
+    NSLog(@"[XGPush] Handle receive success");
+  } errorCallback:^{
+    NSLog(@"[XGPush] Handle receive error");
+  }];
+}
+
+// Required for the registrationError event.
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+  [XGPushManager didFailToRegisterForRemoteNotificationsWithError:error];
+}
+
+// Required for the localNotification event.
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+  [XGPushManager didReceiveLocalNotification:notification];
+}
 
 @end

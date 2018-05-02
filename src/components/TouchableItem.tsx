@@ -13,15 +13,15 @@ import * as React from 'react'
 import {
   Platform,
   TouchableNativeFeedback,
-  TouchableNativeFeedbackProperties,
+  TouchableNativeFeedbackProps,
   TouchableOpacity,
-  TouchableOpacityProperties,
+  TouchableOpacityProps,
   View
 } from 'react-native'
 
 const ANDROID_VERSION_LOLLIPOP = 21
 
-interface ITouchableItemProps extends TouchableNativeFeedbackProperties, TouchableOpacityProperties {
+interface ITouchableItemProps extends TouchableNativeFeedbackProps, TouchableOpacityProps {
   borderless?: boolean
   pressColor?: string
 }
