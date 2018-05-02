@@ -2,7 +2,7 @@ import * as React from 'react'
 import {
   ActivityIndicator,
   FlatList,
-  FlatListProperties,
+  FlatListProps,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -24,7 +24,7 @@ const log = (text: string) => {
   if (DEBUG) console.log(text)
 }
 
-interface IRefreshListViewProps<TItem> extends FlatListProperties<TItem> {
+interface IRefreshListViewProps<TItem> extends FlatListProps<TItem> {
   refreshState: RefreshState
   footerContainerStyle?: ViewStyle
   footerTextStyle?: ViewStyle

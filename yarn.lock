@@ -5222,6 +5222,10 @@ react-native-wechat@^1.9.9:
   dependencies:
     events "1.0.2"
 
+react-native-xinge-push@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/react-native-xinge-push/-/react-native-xinge-push-0.5.1.tgz#e05ba1fa075210ca1c8f4770ed156186c1e40ca8"
+
 react-native@0.55.3:
   version "0.55.3"
   resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.55.3.tgz#6ff1691bd0645d0480fba16377edb9dce5bd28c4"
