@@ -17,8 +17,8 @@ import {
   NavigationTabScreenOptions,
   TabNavigator
 } from 'react-navigation'
-import { TouchableItem } from '../components/TouchableItem'
 import * as colors from '../colors'
+import { TouchableItem } from '../components/TouchableItem'
 import { topTabNavigatorConfig } from '../config'
 import { INavigationLinkListNavParams } from './NavigationLinkList'
 

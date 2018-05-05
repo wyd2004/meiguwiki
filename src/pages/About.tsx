@@ -1,8 +1,8 @@
 import * as React from 'react'
 import {
-  Platform,
   Image,
   ImageStyle,
+  Platform,
   SafeAreaView,
   StyleSheet,
   Text,
