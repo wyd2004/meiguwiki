@@ -174,7 +174,7 @@ export function createArticleList<NavigationOptions = never> (
       )
     }
     renderListSeparator = () => {
-      return <View style={this.props.jumpMode ? styles.listShorterSeparator : styles.listSeparator} />
+      return <View style={this.props.listMode === 'simple' ? styles.listShorterSeparator : styles.listSeparator} />
     }
     onHeaderRefresh = async refreshState => {
       try {

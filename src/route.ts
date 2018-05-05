@@ -52,6 +52,7 @@ export const RootStackNavigator = StackNavigator({
       tabBarPosition: 'bottom',
       swipeEnabled: false,
       animationEnabled: false,
+      lazy: true,
       tabBarOptions: {
         activeTintColor: bottomTabActiveTintColor,
         inactiveTintColor: bottomTabInactiveTintColor
