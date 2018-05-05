@@ -1,5 +1,6 @@
 import * as React from 'react'
 import {
+  Platform,
   Image,
   ImageStyle,
   SafeAreaView,
@@ -24,19 +25,27 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 40
   } as ViewStyle,
-  appLogoContainer: {
-    shadowOffset: {
-      width: 0,
-      height: 2
+  appLogoContainer: Platform.select<ViewStyle>({
+    ios: {
+      shadowOffset: {
+        width: 0,
+        height: 2
+      },
+      shadowColor: '#000',
+      shadowOpacity: 0.2,
+      shadowRadius: 3
     },
-    shadowColor: '#000',
-    shadowOpacity: 0.2,
-    shadowRadius: 3
-  } as ViewStyle,
+    android: {
+      elevation: 5,
+      backgroundColor: 'white',
+      borderRadius: 12,
+      overflow: 'hidden'
+    }
+  }),
   appLogo: {
     width: 70,
     height: 70,
-    borderRadius: 12
+    borderRadius: Platform.OS === 'ios' ? 12 : undefined
   } as ImageStyle,
   appTitle: {
     color: colors.mainTextColorOnLightBg,
