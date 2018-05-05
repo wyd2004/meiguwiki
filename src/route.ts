@@ -1,5 +1,5 @@
 import { StackNavigator, StackNavigatorConfig, TabBarBottom, TabNavigator } from 'react-navigation'
-import { bottomTabActiveTintColor, bottomTabInactiveTintColor, topBarBgColor } from './colors'
+import { bottomTabActiveTintColor, bottomTabInactiveTintColor, headerPressColorAndroid, topBarBgColor } from './colors'
 import { About } from './pages/About'
 import { Article } from './pages/Article'
 import { Discovery } from './pages/Discovery'
@@ -91,6 +91,7 @@ export const RootStackNavigator = StackNavigator({
   headerMode: 'screen',
   navigationOptions: {
     headerTruncatedBackTitle: '返回',
+    headerPressColorAndroid,
     headerStyle: {
       backgroundColor: topBarBgColor
     },
