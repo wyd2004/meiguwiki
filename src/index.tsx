@@ -13,6 +13,7 @@ import {
 import SplashScreen from 'react-native-splash-screen'
 import * as WeChat from 'react-native-wechat'
 import XGPush from 'react-native-xinge-push'
+import { statusBarBgColor } from './colors'
 import { apiBaseUrl, weChatAppId, xgPushConfig } from './config'
 import { RootStackNavigator } from './route'
 
@@ -22,7 +23,14 @@ const uriPrefix = 'meiguwiki://app/'
 
 export class App extends React.Component {
   async componentDidMount () {
-    if (Platform.OS === 'ios') SplashScreen.hide()
+    // 微信 SDK
+    try {
+      await WeChat.registerApp(weChatAppId)
+    } catch (e) {
+      // ignore
+    }
+
+    SplashScreen.hide()
 
     // 信鸽推送
     try {
@@ -51,13 +59,6 @@ export class App extends React.Component {
     } catch (e) {
       // ignore
     }
-
-    // 微信 SDK
-    try {
-      await WeChat.registerApp(weChatAppId)
-    } catch (e) {
-      // ignore
-    }
   }
   componentWillUnmount () {
     XGPush.removeEventListener('register', this.onPushRegister)
@@ -75,7 +76,7 @@ export class App extends React.Component {
   render () {
     return (
       <View style={StyleSheet.absoluteFill}>
-        <StatusBar barStyle="light-content" />
+        <StatusBar barStyle="light-content" backgroundColor={statusBarBgColor} />
         <RootStackNavigator uriPrefix={uriPrefix} />
       </View>
     )
