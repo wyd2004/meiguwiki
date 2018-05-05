@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.5.0"></a>
+# [1.5.0](https://git.coding.net/yandb/meiguwiki/compare/v1.4.0...v1.5.0) (2018-05-05)
+
+
+### Bug Fixes
+
+* 修复文章列表分割线长度错误 ([beb19b0](https://git.coding.net/yandb/meiguwiki/commits/beb19b0))
+* **android:** 修复“关于”Tab 中的 Logo 无阴影问题 ([9232e3b](https://git.coding.net/yandb/meiguwiki/commits/9232e3b))
+* **android:** 修复分享对话框无背景遮罩问题 ([181b61a](https://git.coding.net/yandb/meiguwiki/commits/181b61a))
+* **android:** 修复底部 Tab 栏显示在顶部问题 ([56d05a7](https://git.coding.net/yandb/meiguwiki/commits/56d05a7))
+* **android:** 修复文章页加载完成后加载指示器不消失问题 ([3c8028f](https://git.coding.net/yandb/meiguwiki/commits/3c8028f))
+* **android:** 修复顶部 Tab 涟漪颜色过暗问题 ([1fcc957](https://git.coding.net/yandb/meiguwiki/commits/1fcc957))
+
+
+### Features
+
+* 安卓允许系统备份应用数据 ([2b22b11](https://git.coding.net/yandb/meiguwiki/commits/2b22b11))
+* **android:** 在内置浏览器使用硬件后退按钮可以进行后退操作 ([2ccac7d](https://git.coding.net/yandb/meiguwiki/commits/2ccac7d))
+* **android:** 增加启动屏幕 ([f03a26a](https://git.coding.net/yandb/meiguwiki/commits/f03a26a))
+* **android:** 点击区域支持原生涟漪效果 ([36a2f91](https://git.coding.net/yandb/meiguwiki/commits/36a2f91))
+* 安卓支持 release 发布 ([a0ef9a5](https://git.coding.net/yandb/meiguwiki/commits/a0ef9a5))
+
+
+
 <a name="1.4.0"></a>
 # [1.4.0](https://git.coding.net/yandb/meiguwiki/compare/v1.3.1...v1.4.0) (2018-05-02)
 
