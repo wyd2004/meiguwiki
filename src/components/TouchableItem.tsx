@@ -54,7 +54,7 @@ export class TouchableItem extends React.Component<ITouchableItemProps> {
             this.props.borderless
           )}
         >
-          <View style={style}>{React.Children.only(this.props.children)}</View>
+          <View style={style}>{this.props.children}</View>
         </TouchableNativeFeedback>
       )
     }

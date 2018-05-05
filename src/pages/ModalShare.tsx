@@ -14,6 +14,7 @@ import {
 } from 'react-native'
 import Toast from 'react-native-root-toast'
 import * as WeChat from 'react-native-wechat'
+import { TouchableItem } from '../components/TouchableItem'
 import resolveAssetSource from 'react-native/Libraries/Image/resolveAssetSource'
 import { NavigationScreenProps } from 'react-navigation'
 import * as colors from '../colors'
@@ -142,9 +143,9 @@ export class ModalShare extends React.Component<NavigationScreenProps<IModalShar
               <Text style={styles.shareButtonText}>复制文字</Text>
             </TouchableOpacity>
           </View>
-          <TouchableOpacity style={styles.backButton} onPress={this.onBackPress}>
+          <TouchableItem style={styles.backButton} onPress={this.onBackPress}>
             <Text style={styles.largeText}>取消</Text>
-          </TouchableOpacity>
+          </TouchableItem>
         </View>
       </View>
     )
