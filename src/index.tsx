@@ -26,25 +26,27 @@ export class App extends React.Component {
 
     // 信鸽推送
     try {
-      if (Platform.OS === 'ios') {
-        XGPush.init(xgPushConfig.ios.accessId, xgPushConfig.ios.accessKey)
-      } else {
-        XGPush.init(xgPushConfig.android.accessId, xgPushConfig.android.accessKey)
-      }
-      XGPush.addEventListener('register', this.onPushRegister)
-      XGPush.addEventListener('notification', this.onPushNotification)
-      if (Platform.OS === 'ios') {
-        XGPush.checkPermissions(permissions => {
-          if (permissions.alert) {
-            XGPush.register()
-          } else {
-            Alert.alert('启用推送通知', '建议开启推送通知，快人一步了解股票圈一手资讯', [
-              { text: '了解', onPress: () => XGPush.register() }
-            ], { cancelable: false })
-          }
-        })
-      } else {
-        XGPush.register()
+      if (Platform.OS === 'ios') { // TODO: 针对安卓临时关闭推送功能
+        if (Platform.OS === 'ios') {
+          XGPush.init(xgPushConfig.ios.accessId, xgPushConfig.ios.accessKey)
+        } else {
+          XGPush.init(xgPushConfig.android.accessId, xgPushConfig.android.accessKey)
+        }
+        XGPush.addEventListener('register', this.onPushRegister)
+        XGPush.addEventListener('notification', this.onPushNotification)
+        if (Platform.OS === 'ios') {
+          XGPush.checkPermissions(permissions => {
+            if (permissions.alert) {
+              XGPush.register()
+            } else {
+              Alert.alert('启用推送通知', '建议开启推送通知，快人一步了解股票圈一手资讯', [
+                { text: '了解', onPress: () => XGPush.register() }
+              ], { cancelable: false })
+            }
+          })
+        } else {
+          XGPush.register()
+        }
       }
     } catch (e) {
       // ignore

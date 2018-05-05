@@ -71,6 +71,12 @@
 
 # wechat
 
--keep class com.tencent.mm.sdk.** {
-  *;
-}
+-keep class com.tencent.mm.sdk.** { *; }
+
+# xinge
+
+-keep public class * extends android.app.Service
+-keep public class * extends android.content.BroadcastReceiver
+-keep class com.tencent.android.tpush.** { *; }
+-keep class com.tencent.mid.** { *; }
+-keep class com.qq.taf.jce.** { *; }
