@@ -7,7 +7,6 @@ import {
   StyleSheet,
   Text,
   TextStyle,
-  TouchableOpacity,
   View,
   ViewStyle
 } from 'react-native'
@@ -19,6 +18,7 @@ import {
   TabNavigator
 } from 'react-navigation'
 import * as colors from '../colors'
+import { TouchableItem } from '../components/TouchableItem'
 import { topTabNavigatorConfig } from '../config'
 import { INavigationLinkListNavParams } from './NavigationLinkList'
 
@@ -69,9 +69,9 @@ class ListCell extends React.Component<IForum & NavigationScreenProps & { odd: b
     const rightBorder = this.props.odd ? <View style={styles.listItemRightBorder} /> : undefined
     return (
       <View style={styles.listItemContainer}>
-        <TouchableOpacity style={styles.listItemTouchable} onPress={this.onPress}>
+        <TouchableItem style={styles.listItemTouchable} onPress={this.onPress}>
           <Text style={styles.listItemText}>{this.props.name}</Text>
-        </TouchableOpacity>
+        </TouchableItem>
         {rightBorder}
       </View>
     )

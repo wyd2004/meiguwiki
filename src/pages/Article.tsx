@@ -7,7 +7,6 @@ import {
   StyleSheet,
   Text,
   TextStyle,
-  TouchableOpacity,
   View,
   ViewStyle
 } from 'react-native'
@@ -16,6 +15,7 @@ import { NavigationScreenConfig, NavigationScreenProps, NavigationStackScreenOpt
 import * as colors from '../colors'
 import { EnhancedWebView } from '../components/EnhancedWebView'
 import { LoadingOverlay } from '../components/LoadingOverlay'
+import { TouchableItem } from '../components/TouchableItem'
 import { webBaseUrl } from '../config'
 import { IModalShareNavParams } from '../pages/ModalShare'
 import { store } from '../stores'
@@ -65,9 +65,15 @@ class ShareButton extends React.Component<IArticle & NavigationScreenProps & {
   }
   render () {
     return (
-      <TouchableOpacity disabled={this.props.disabled} style={styles.shareButton} onPress={this.onPress}>
+      <TouchableItem
+        borderless
+        pressColor={colors.headerPressColorAndroid}
+        disabled={this.props.disabled}
+        style={styles.shareButton}
+        onPress={this.onPress}
+      >
         <SLIIcon name="share-alt" size={18} color="#ffffff" />
-      </TouchableOpacity>
+      </TouchableItem>
     )
   }
 }

@@ -1,8 +1,10 @@
 import * as React from 'react'
 import {
   ActivityIndicator,
+  BackHandler,
   LayoutChangeEvent,
   NavState,
+  Platform,
   StyleSheet,
   Text,
   TextStyle,
@@ -33,7 +35,7 @@ const styles = StyleSheet.create({
   } as ViewStyle,
   backButtonTitle: {
     fontSize: 17,
-    paddingRight: 10
+    paddingRight: Platform.OS === 'ios' ? 10 : 0
   } as TextStyle,
   webViewLoadingIndicator: {
     marginHorizontal: 15
@@ -119,6 +121,20 @@ export class WebBrowser extends React.Component<IWebBrowserProps> {
       headerRight: params.loading
         && <ActivityIndicator style={styles.webViewLoadingIndicator} size="small" color="white" />
     }
+  }
+  componentDidMount () {
+    BackHandler.addEventListener('hardwareBackPress', this.onHardwareBackPress)
+  }
+  componentWillUnmount () {
+    BackHandler.removeEventListener('hardwareBackPress', this.onHardwareBackPress)
+  }
+  onHardwareBackPress = () => {
+    const { canWebViewGoBack, webViewRef } = this.props.navigation.state.params
+    if (canWebViewGoBack) {
+      webViewRef.goBack()
+      return true
+    }
+    return false
   }
   onNavigationStateChange = (navState: NavState) => {
     this.props.navigation.setParams({

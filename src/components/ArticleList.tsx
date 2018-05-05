@@ -5,7 +5,6 @@ import {
   StyleSheet,
   Text,
   TextStyle,
-  TouchableOpacity,
   View,
   ViewStyle
 } from 'react-native'
@@ -19,6 +18,7 @@ import {
 } from 'react-navigation'
 import * as colors from '../colors'
 import { RefreshListView } from '../components/RefreshListView'
+import { TouchableItem } from '../components/TouchableItem'
 import { IArticleNavParams } from '../pages/Article'
 import { IWebBrowserNavParams } from '../pages/WebBrowser'
 import { store } from '../stores'
@@ -102,23 +102,23 @@ class ListCell extends React.Component<IArticle & NavigationScreenProps & {
     return this.props.listMode === 'simple' ? (
       <View>
         {topBorder}
-        <TouchableOpacity style={styles.listItemRowContainer} onPress={this.onPress}>
+        <TouchableItem style={styles.listItemRowContainer} onPress={this.onPress}>
           <Text style={styles.listItemRowText}>{this.props.subject}</Text>
           <EntypoIcon name="chevron-thin-right" size={20} color={colors.listArrowColor} />
-        </TouchableOpacity>
+        </TouchableItem>
         {bottomBorder}
       </View>
     ) : (
       <View>
         {topBorder}
-        <TouchableOpacity style={styles.listItemContainer} onPress={this.onPress}>
+        <TouchableItem style={styles.listItemContainer} onPress={this.onPress}>
           <Text style={styles.listItemSubjectText}>{this.props.subject}</Text>
           <View style={styles.listItemLine}>
             <Text style={styles.listItemDateTimeText}>{formatTime(this.props.timestamp)}</Text>
             <FeatherIcon name="eye" size={14} color={colors.accessoryTextColorOnLightBg} />
             <Text style={styles.viewsText}>{this.props.views}</Text>
           </View>
-        </TouchableOpacity>
+        </TouchableItem>
         {bottomBorder}
       </View>
     )
@@ -174,7 +174,7 @@ export function createArticleList<NavigationOptions = never> (
       )
     }
     renderListSeparator = () => {
-      return <View style={this.props.jumpMode ? styles.listShorterSeparator : styles.listSeparator} />
+      return <View style={this.props.listMode === 'simple' ? styles.listShorterSeparator : styles.listSeparator} />
     }
     onHeaderRefresh = async refreshState => {
       try {

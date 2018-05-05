@@ -1,5 +1,5 @@
-import { StackNavigator, StackNavigatorConfig, TabNavigator } from 'react-navigation'
-import { bottomTabActiveTintColor, bottomTabInactiveTintColor, topBarBgColor } from './colors'
+import { StackNavigator, StackNavigatorConfig, TabBarBottom, TabNavigator } from 'react-navigation'
+import { bottomTabActiveTintColor, bottomTabInactiveTintColor, headerPressColorAndroid, topBarBgColor } from './colors'
 import { About } from './pages/About'
 import { Article } from './pages/Article'
 import { Discovery } from './pages/Discovery'
@@ -48,6 +48,11 @@ export const RootStackNavigator = StackNavigator({
         path: 'about'
       }
     }, {
+      tabBarComponent: TabBarBottom,
+      tabBarPosition: 'bottom',
+      swipeEnabled: false,
+      animationEnabled: false,
+      lazy: true,
       tabBarOptions: {
         activeTintColor: bottomTabActiveTintColor,
         inactiveTintColor: bottomTabInactiveTintColor
@@ -86,6 +91,7 @@ export const RootStackNavigator = StackNavigator({
   headerMode: 'screen',
   navigationOptions: {
     headerTruncatedBackTitle: '返回',
+    headerPressColorAndroid,
     headerStyle: {
       backgroundColor: topBarBgColor
     },

@@ -3,7 +3,6 @@ package com.meiguwiki.app;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import com.jeepeng.react.xgpush.PushPackage;
 import com.apsl.versionnumber.RNVersionNumberPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.theweflex.react.WeChatPackage;
@@ -27,12 +26,11 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-          new MainReactPackage(),
-            new PushPackage(),
-            new RNVersionNumberPackage(),
-            new SplashScreenReactPackage(),
-            new WeChatPackage(),
-            new VectorIconsPackage()
+              new MainReactPackage(),
+              new RNVersionNumberPackage(),
+              new SplashScreenReactPackage(),
+              new WeChatPackage(),
+              new VectorIconsPackage()
       );
     }
 

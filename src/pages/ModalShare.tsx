@@ -5,6 +5,7 @@ import {
   Clipboard,
   Image,
   ImageStyle,
+  Platform,
   StyleSheet,
   Text,
   TextStyle,
@@ -17,6 +18,7 @@ import * as WeChat from 'react-native-wechat'
 import resolveAssetSource from 'react-native/Libraries/Image/resolveAssetSource'
 import { NavigationScreenProps } from 'react-navigation'
 import * as colors from '../colors'
+import { TouchableItem } from '../components/TouchableItem'
 import { IArticle } from '../stores/ArticleStore'
 
 const styles = StyleSheet.create({
@@ -25,9 +27,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingTop: 30
   } as ViewStyle,
-  backMask: {
-    flexGrow: 1
-  } as ViewStyle,
+  backMask: Platform.select<ViewStyle>({
+    ios: {
+      flexGrow: 1
+    },
+    android: {
+      flexGrow: 1,
+      backgroundColor: 'rgba(0, 0, 0, .5)'
+    }
+  }),
   backButton: {
     alignItems: 'center',
     alignSelf: 'stretch',
@@ -142,9 +150,9 @@ export class ModalShare extends React.Component<NavigationScreenProps<IModalShar
               <Text style={styles.shareButtonText}>复制文字</Text>
             </TouchableOpacity>
           </View>
-          <TouchableOpacity style={styles.backButton} onPress={this.onBackPress}>
+          <TouchableItem style={styles.backButton} onPress={this.onBackPress}>
             <Text style={styles.largeText}>取消</Text>
-          </TouchableOpacity>
+          </TouchableItem>
         </View>
       </View>
     )

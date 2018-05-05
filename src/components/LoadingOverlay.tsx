@@ -20,16 +20,13 @@ export class LoadingOverlay extends React.Component<{
   visible: boolean;
 }> {
   render () {
-    return (
-      <View
-        style={[styles.container, {
-          display: this.props.visible ? 'flex' : 'none'
-        }]}
-      >
+    return this.props.visible ? (
+      <View style={styles.container}>
         <View style={styles.centerView}>
           <ActivityIndicator size="large" color="white" />
         </View>
       </View>
-    )
+      // tslint:disable-next-line:no-null-keyword
+    ) : null
   }
 }
