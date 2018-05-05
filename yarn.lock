@@ -432,21 +432,15 @@
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@types/react-native-version-number/-/react-native-version-number-0.3.0.tgz#5b2183c1416593a349f797fc409808a575f8b4d5"
 
-"@types/react-native@*":
-  version "0.55.10"
-  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.55.10.tgz#d68c1dd216caa5a5732774f508ad3203335cca5d"
-  dependencies:
-    "@types/react" "*"
-
-"@types/react-native@^0.55.1":
-  version "0.55.11"
-  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.55.11.tgz#26aea9a9708cf1d10a8bce34d1e39425870b9706"
+"@types/react-native@*", "@types/react-native@^0.55.1":
+  version "0.55.12"
+  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.55.12.tgz#35778c709db57ff3092573d7a53f15ca380601ab"
   dependencies:
     "@types/react" "*"
 
 "@types/react-navigation@^1.5.4":
-  version "1.5.9"
-  resolved "https://registry.yarnpkg.com/@types/react-navigation/-/react-navigation-1.5.9.tgz#a3e6d0646131ffbc3ee228a82fa1f19b140edfd7"
+  version "1.5.10"
+  resolved "https://registry.yarnpkg.com/@types/react-navigation/-/react-navigation-1.5.10.tgz#6b92401f676cf1f5b4e1315d768d61a913d47657"
   dependencies:
     "@types/react" "*"
     "@types/react-native" "*"
@@ -4505,8 +4499,8 @@ mobx-react@^5.0.0:
     react-lifecycles-compat "^3.0.2"
 
 mobx@^4.1.1:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/mobx/-/mobx-4.2.0.tgz#ee0b0a4f3da2f4776225046ab208ac329a4841d4"
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/mobx/-/mobx-4.2.1.tgz#dd4190daf1b43d41a3a228585253f9970b0a27dd"
 
 mock-require@^2.0.2:
   version "2.0.2"
