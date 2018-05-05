@@ -1,4 +1,4 @@
-import { StackNavigator, StackNavigatorConfig, TabNavigator } from 'react-navigation'
+import { StackNavigator, StackNavigatorConfig, TabBarBottom, TabNavigator } from 'react-navigation'
 import { bottomTabActiveTintColor, bottomTabInactiveTintColor, topBarBgColor } from './colors'
 import { About } from './pages/About'
 import { Article } from './pages/Article'
@@ -48,6 +48,10 @@ export const RootStackNavigator = StackNavigator({
         path: 'about'
       }
     }, {
+      tabBarComponent: TabBarBottom,
+      tabBarPosition: 'bottom',
+      swipeEnabled: false,
+      animationEnabled: false,
       tabBarOptions: {
         activeTintColor: bottomTabActiveTintColor,
         inactiveTintColor: bottomTabInactiveTintColor
