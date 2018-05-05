@@ -3,6 +3,7 @@ import {
   ActivityIndicator,
   LayoutChangeEvent,
   NavState,
+  Platform,
   StyleSheet,
   Text,
   TextStyle,
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
   } as ViewStyle,
   backButtonTitle: {
     fontSize: 17,
-    paddingRight: 10
+    paddingRight: Platform.OS === 'ios' ? 10 : 0
   } as TextStyle,
   webViewLoadingIndicator: {
     marginHorizontal: 15
