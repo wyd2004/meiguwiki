@@ -23,6 +23,8 @@ const uriPrefix = 'meiguwiki://app/'
 
 export class App extends React.Component {
   async componentDidMount () {
+    SplashScreen.hide()
+
     // 微信 SDK
     try {
       await WeChat.registerApp(weChatAppId)
@@ -30,31 +32,29 @@ export class App extends React.Component {
       // ignore
     }
 
-    SplashScreen.hide()
-
     // 信鸽推送
     try {
-      if (Platform.OS === 'ios') { // TODO: 针对安卓临时关闭推送功能
-        if (Platform.OS === 'ios') {
-          XGPush.init(xgPushConfig.ios.accessId, xgPushConfig.ios.accessKey)
-        } else {
-          XGPush.init(xgPushConfig.android.accessId, xgPushConfig.android.accessKey)
-        }
-        XGPush.addEventListener('register', this.onPushRegister)
-        XGPush.addEventListener('notification', this.onPushNotification)
-        if (Platform.OS === 'ios') {
-          XGPush.checkPermissions(permissions => {
-            if (permissions.alert) {
-              XGPush.register()
-            } else {
-              Alert.alert('启用推送通知', '建议开启推送通知，快人一步了解股票圈一手资讯', [
-                { text: '了解', onPress: () => XGPush.register() }
-              ], { cancelable: false })
-            }
-          })
-        } else {
-          XGPush.register()
-        }
+      if (Platform.OS === 'ios') {
+        XGPush.init(xgPushConfig.ios.accessId, xgPushConfig.ios.accessKey)
+      } else {
+        XGPush.init(xgPushConfig.android.accessId, xgPushConfig.android.accessKey)
+      }
+      XGPush.addEventListener('register', this.onPushRegister)
+      XGPush.addEventListener('notification', this.onPushNotification)
+      if (Platform.OS === 'ios') {
+        XGPush.checkPermissions(permissions => {
+          if (permissions.alert) {
+            XGPush.register()
+          } else {
+            Alert.alert('启用推送通知', '建议开启推送通知，快人一步了解股票圈一手资讯', [
+              { text: '了解', onPress: () => XGPush.register() }
+            ], { cancelable: false })
+          }
+        })
+      } else {
+        XGPush.register()
+        const initialNotification = await XGPush.getInitialNotification()
+        await this.openNotificationTargetUri(initialNotification)
       }
     } catch (e) {
       // ignore
@@ -67,10 +67,17 @@ export class App extends React.Component {
   onPushRegister = deviceToken => {
     XGPush.registerForXG(deviceToken)
   }
-  async onPushNotification (notification) {
+  onPushNotification = async notification => {
     if (notification.clicked) {
-      const uri = notification.uri
+      await this.openNotificationTargetUri(notification)
+    }
+  }
+  async openNotificationTargetUri (notification) {
+    try {
+      const uri = Platform.OS === 'ios' ? notification.uri : JSON.parse(notification.custom_content).uri
       if (uri && await Linking.canOpenURL(uri)) await Linking.openURL(uri)
+    } catch (e) {
+      // ignore
     }
   }
   render () {
