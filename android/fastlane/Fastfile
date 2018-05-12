@@ -25,7 +25,8 @@ platform :android do
     gradle(task: "assembleRelease")
     pgyer(
       api_key: "877a5f129b26f36e17dadab45938247e",
-      user_key: "36fe007eae2a3cb9fea293f2c0c8ee49"
+      user_key: "36fe007eae2a3cb9fea293f2c0c8ee49",
+      update_description: changelog
     )
   end
 end
