@@ -1,0 +1,27 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:android)
+
+platform :android do
+  desc "Submit a new Beta Build to Pgyer"
+  lane :beta do
+    gradle(task: "assembleRelease")
+    pgyer(
+      api_key: "877a5f129b26f36e17dadab45938247e",
+      user_key: "36fe007eae2a3cb9fea293f2c0c8ee49"
+    )
+  end
+end
