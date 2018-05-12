@@ -7,7 +7,9 @@
     "test": "jest",
     "lint": "tslint --fix --project tsconfig.json",
     "release": "standard-version",
-    "apk": "cd android && ./gradlew assembleRelease"
+    "apk": "cd android && ./gradlew assembleRelease",
+    "beta-ios": "cd ios && bundle exec fastlane beta",
+    "beta-android": "cd android && bundle exec fastlane beta"
   },
   "standard-version": {
     "scripts": {

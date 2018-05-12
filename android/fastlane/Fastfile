@@ -18,11 +18,11 @@ default_platform(:android)
 platform :android do
   desc "Submit a new Beta Build to Pgyer"
   lane :beta do
-    gradle(task: "assembleRelease")
     changelog = prompt(
-      text: "Changelog: ",
+      text: "Changelog:",
       multi_line_end_keyword: "END"
     )
+    gradle(task: "assembleRelease")
     pgyer(
       api_key: "877a5f129b26f36e17dadab45938247e",
       user_key: "36fe007eae2a3cb9fea293f2c0c8ee49"
