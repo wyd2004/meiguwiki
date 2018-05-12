@@ -3,6 +3,11 @@ package com.meiguwiki.app;
 import android.os.Bundle;
 
 import com.facebook.react.ReactActivity;
+import com.tencent.android.tpush.XGBasicPushNotificationBuilder;
+import com.tencent.android.tpush.XGCustomPushNotificationBuilder;
+import com.tencent.android.tpush.XGPushManager;
+import com.tencent.android.tpush.XGPushNotificationBuilder;
+
 import org.devio.rn.splashscreen.SplashScreen;
 
 public class MainActivity extends ReactActivity {
@@ -19,6 +24,9 @@ public class MainActivity extends ReactActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     SplashScreen.show(this);
+    XGPushNotificationBuilder builder = new XGBasicPushNotificationBuilder();
+    builder.setSmallIcon(R.drawable.ic_notification);
+    XGPushManager.setDefaultNotificationBuilder(getApplicationContext(), builder);
     super.onCreate(savedInstanceState);
   }
 }

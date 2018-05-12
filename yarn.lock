@@ -439,15 +439,15 @@
     "@types/react" "*"
 
 "@types/react-navigation@^1.5.4":
-  version "1.5.10"
-  resolved "https://registry.yarnpkg.com/@types/react-navigation/-/react-navigation-1.5.10.tgz#6b92401f676cf1f5b4e1315d768d61a913d47657"
+  version "1.5.11"
+  resolved "https://registry.yarnpkg.com/@types/react-navigation/-/react-navigation-1.5.11.tgz#317eb81ff8a4dfbad8f374cadab30e07e0effa31"
   dependencies:
     "@types/react" "*"
     "@types/react-native" "*"
 
 "@types/react@*", "@types/react@^16.3.5":
-  version "16.3.13"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.3.13.tgz#47d466462b774556c1174ea0eda22c0578643362"
+  version "16.3.14"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.3.14.tgz#f90ac6834de172e13ecca430dcb6814744225d36"
   dependencies:
     csstype "^2.2.0"
 
@@ -1983,8 +1983,8 @@ cssom@0.3.x, "cssom@>= 0.3.2 < 0.4.0":
     cssom "0.3.x"
 
 csstype@^2.2.0:
-  version "2.4.2"
-  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.4.2.tgz#158e36c69566bf968da63d0ba14eda1c20e8643a"
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.5.1.tgz#654231d1ddddfc3eb93da281a1144e7c14fc0bdc"
 
 currently-unhandled@^0.4.1:
   version "0.4.1"
@@ -5222,9 +5222,9 @@ react-native-xinge-push@^0.5.1:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/react-native-xinge-push/-/react-native-xinge-push-0.5.1.tgz#e05ba1fa075210ca1c8f4770ed156186c1e40ca8"
 
-react-native@0.55.3:
-  version "0.55.3"
-  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.55.3.tgz#6ff1691bd0645d0480fba16377edb9dce5bd28c4"
+react-native@0.55.4:
+  version "0.55.4"
+  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.55.4.tgz#eecffada3750a928e2ddd07cf11d857ae9751c30"
   dependencies:
     absolute-path "^0.0.0"
     art "^0.10.0"

@@ -7,7 +7,9 @@
     "test": "jest",
     "lint": "tslint --fix --project tsconfig.json",
     "release": "standard-version",
-    "apk": "cd android && ./gradlew assembleRelease"
+    "apk": "cd android && ./gradlew assembleRelease",
+    "beta-ios": "cd ios && bundle exec fastlane beta",
+    "beta-android": "cd android && bundle exec fastlane beta"
   },
   "standard-version": {
     "scripts": {
@@ -20,7 +22,7 @@
     "mobx-react": "^5.0.0",
     "moment": "^2.22.0",
     "react": "^16.3.0-alpha.1",
-    "react-native": "0.55.3",
+    "react-native": "0.55.4",
     "react-native-root-toast": "^3.0.1",
     "react-native-splash-screen": "^3.0.6",
     "react-native-vector-icons": "^4.6.0",

@@ -161,7 +161,7 @@ export function createArticleList<NavigationOptions = never> (
     }
     listKeyExtractor = (item: IArticle) => item.tid.toString()
     renderListItem: ListRenderItem<IArticle> = ({ item, index, separators }) => {
-      const articleCount = store.forumStore.forums[fid].articles.length
+      const articleCount = this.forum.get().articles.length
       return (
         <ListCell
           navigation={this.props.navigation}
@@ -191,7 +191,7 @@ export function createArticleList<NavigationOptions = never> (
       }
     }
     render () {
-      const forum = store.forumStore.forums[fid]
+      const forum = this.forum.get()
       return (
         <RefreshListView
           style={styles.listContainer}
