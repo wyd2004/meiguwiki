@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.6.0"></a>
+# [1.6.0](https://git.coding.net/yandb/meiguwiki/compare/v1.5.0...v1.6.0) (2018-05-12)
+
+
+### Bug Fixes
+
+* **android:** 仅允许竖屏模式 ([7fa0df4](https://git.coding.net/yandb/meiguwiki/commits/7fa0df4))
+
+
+### Features
+
+* **android:** 更新应用图标以符合系统标准 ([a0ca0c4](https://git.coding.net/yandb/meiguwiki/commits/a0ca0c4))
+* **android:** 集成信鸽推送 ([58cedf7](https://git.coding.net/yandb/meiguwiki/commits/58cedf7))
+
+
+
 <a name="1.5.0"></a>
 # [1.5.0](https://git.coding.net/yandb/meiguwiki/compare/v1.4.0...v1.5.0) (2018-05-05)
 
