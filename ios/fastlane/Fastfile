@@ -26,6 +26,6 @@ platform :ios do
       scheme: "meiguwiki",
       include_bitcode: true
     )
-    upload_to_testflight
+    upload_to_testflight(changelog: changelog)
   end
 end
