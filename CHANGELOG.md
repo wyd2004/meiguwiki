@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.7.1"></a>
+## [1.7.1](https://git.coding.net/yandb/meiguwiki/compare/v1.7.0...v1.7.1) (2018-06-17)
+
+
+### Bug Fixes
+
+* 修复使用了错误 wechatAppId 问题 ([6604711](https://git.coding.net/yandb/meiguwiki/commits/6604711))
+
+
+
 <a name="1.7.0"></a>
 # [1.7.0](https://git.coding.net/yandb/meiguwiki/compare/v1.6.0...v1.7.0) (2018-06-17)
 
