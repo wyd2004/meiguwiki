@@ -109,7 +109,8 @@ android {
         manifestPlaceholders = [
             XG_ACCESS_ID: "",
             XG_ACCESS_KEY: "",
-            HW_APPID: ""
+            HW_APPID: "",
+            PACKAGE_NAME: "com.meiguwiki.app"
         ]
     }
     splits {
