@@ -13,7 +13,7 @@
   },
   "standard-version": {
     "scripts": {
-      "posttag": "react-native-version --amend"
+      "postcommit": "react-native-version --amend"
     }
   },
   "dependencies": {
