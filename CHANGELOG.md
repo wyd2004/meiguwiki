@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.7.0"></a>
+# [1.7.0](https://git.coding.net/yandb/meiguwiki/compare/v1.6.0...v1.7.0) (2018-06-17)
+
+
+### Bug Fixes
+
+* **android:** 修复浏览文章列表可能奔溃问题（升级新版 JSC） ([e987bdd](https://git.coding.net/yandb/meiguwiki/commits/e987bdd))
+
+
+### Features
+
+* **android:** 故意加长启动屏幕展示时间 ([fb352e8](https://git.coding.net/yandb/meiguwiki/commits/fb352e8))
+* **ios:** 更新信鸽推送 SDK ([eae189a](https://git.coding.net/yandb/meiguwiki/commits/eae189a))
+
+
+
 <a name="1.6.0"></a>
 # [1.6.0](https://git.coding.net/yandb/meiguwiki/compare/v1.5.0...v1.6.0) (2018-05-12)
 

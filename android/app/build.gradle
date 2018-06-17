@@ -101,8 +101,8 @@ android {
         applicationId "com.meiguwiki.app"
         minSdkVersion 21
         targetSdkVersion 22
-        versionCode 9
-        versionName "1.6.0"
+        versionCode 10
+        versionName "1.7.0"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
