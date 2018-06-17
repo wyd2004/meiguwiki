@@ -160,7 +160,7 @@ export function createArticleList<NavigationOptions = never> (
       this.forum.destroy()
     }
     listKeyExtractor = (item: IArticle) => item.tid.toString()
-    renderListItem: ListRenderItem<IArticle> = ({ item, index, separators }) => {
+    renderListItem: ListRenderItem<IArticle> = ({ item, index }) => {
       const articleCount = this.forum.get().articles.length
       return (
         <ListCell

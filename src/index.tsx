@@ -70,7 +70,6 @@ export class App extends React.Component {
     console.log(`XG Device Token: ${deviceToken}`)
   }
   onPushNotification = async notification => {
-    console.log(notification)
     if (notification.clicked) {
       await this.openNotificationTargetUri(notification)
     }
