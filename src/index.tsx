@@ -65,9 +65,10 @@ export class App extends React.Component {
     XGPush.removeEventListener('notification', this.onPushNotification)
   }
   onPushRegister = deviceToken => {
-    XGPush.registerForXG(deviceToken)
+    console.log(`XG Device Token: ${deviceToken}`)
   }
   onPushNotification = async notification => {
+    console.log(notification)
     if (notification.clicked) {
       await this.openNotificationTargetUri(notification)
     }
