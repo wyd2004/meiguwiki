@@ -16,6 +16,7 @@ import XGPush from 'react-native-xinge-push'
 import { statusBarBgColor } from './colors'
 import { apiBaseUrl, weChatAppId, xgPushConfig } from './config'
 import { RootStackNavigator } from './route'
+import { sleep } from './utils'
 
 axios.defaults.baseURL = apiBaseUrl
 mobx.configure({ enforceActions: true })
@@ -23,6 +24,7 @@ const uriPrefix = 'meiguwiki://app/'
 
 export class App extends React.Component {
   async componentDidMount () {
+    if (Platform.OS === 'android') await sleep(2000)
     SplashScreen.hide()
 
     // 微信 SDK
@@ -65,7 +67,7 @@ export class App extends React.Component {
     XGPush.removeEventListener('notification', this.onPushNotification)
   }
   onPushRegister = deviceToken => {
-    XGPush.registerForXG(deviceToken)
+    console.log(`XG Device Token: ${deviceToken}`)
   }
   onPushNotification = async notification => {
     if (notification.clicked) {

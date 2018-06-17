@@ -11,6 +11,7 @@
 #import <React/RCTRootView.h>
 #import <React/RCTLinkingManager.h>
 #import <SplashScreen.h>
+#import <XGPush.h>
 #import <XGPush/XGPushManager.h>
 
 @implementation AppDelegate
@@ -33,6 +34,8 @@
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
   [SplashScreen show];
+  // 统计消息推送的抵达情况
+  [[XGPush defaultManager] reportXGNotificationInfo:launchOptions];
   return YES;
 }
 
@@ -49,34 +52,13 @@
   [XGPushManager didRegisterUserNotificationSettings:notificationSettings];
 }
 
-// Required for the register event.
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
-{
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
   [XGPushManager didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
 }
 
-// Required for the notification event. You must call the completion handler after handling the remote notification.
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
-fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
-{
-  UIApplicationState state = [application applicationState];
-  BOOL isClicked = (state != UIApplicationStateActive);
-  NSMutableDictionary *remoteNotification = [NSMutableDictionary dictionaryWithDictionary:userInfo];
-  if (isClicked) {
-    remoteNotification[@"clicked"] = @YES;
-  }
-  [XGPushManager didReceiveRemoteNotification:remoteNotification fetchCompletionHandler:completionHandler];
-  // 统计收到推送的设备
-  [XGPushManager handleReceiveNotification:remoteNotification successCallback:^{
-    NSLog(@"[XGPush] Handle receive success");
-  } errorCallback:^{
-    NSLog(@"[XGPush] Handle receive error");
-  }];
-}
-
 // Required for the registrationError event.
-- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
-{
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+  NSLog(@"[XGPush] register APNS fail.\n[XGPush] reason : %@", error);
   [XGPushManager didFailToRegisterForRemoteNotificationsWithError:error];
 }
 
@@ -85,5 +67,46 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 {
   [XGPushManager didReceiveLocalNotification:notification];
 }
+
+/**
+ 收到通知消息的回调，通常此消息意味着有新数据可以读取（iOS 7.0+）
+ 
+ @param application  UIApplication 实例
+ @param userInfo 推送时指定的参数
+ @param completionHandler 完成回调
+ */
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+  NSLog(@"[XGPush] receive slient Notification");
+  NSLog(@"[XGPush] userinfo %@", userInfo);
+  UIApplicationState state = [application applicationState];
+  BOOL isClicked = (state != UIApplicationStateActive);
+  NSMutableDictionary *remoteNotification = [NSMutableDictionary dictionaryWithDictionary:userInfo];
+  if(isClicked) {
+    remoteNotification[@"clicked"] = @YES;
+    remoteNotification[@"background"] = @YES;
+  }
+  [[XGPush defaultManager] reportXGNotificationInfo:remoteNotification];
+  [XGPushManager didReceiveRemoteNotification:userInfo fetchCompletionHandler:completionHandler];
+}
+
+// iOS 10 新增 API
+// iOS 10 会走新 API, iOS 10 以前会走到老 API
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
+// App 用户点击通知
+// App 用户选择通知中的行为
+// App 用户在通知中心清除消息
+// 无论本地推送还是远程推送都会走这个回调
+- (void)xgPushUserNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler {
+  NSLog(@"[XGPush] click notification");
+  [[XGPush defaultManager] reportXGNotificationResponse:response];
+  completionHandler();
+}
+
+// App 在前台弹通知需要调用这个接口
+- (void)xgPushUserNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler {
+  [[XGPush defaultManager] reportXGNotificationInfo:notification.request.content.userInfo];
+  completionHandler(UNNotificationPresentationOptionBadge | UNNotificationPresentationOptionSound | UNNotificationPresentationOptionAlert);
+}
+#endif
 
 @end

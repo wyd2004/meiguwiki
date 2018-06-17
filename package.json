@@ -13,11 +13,12 @@
   },
   "standard-version": {
     "scripts": {
-      "posttag": "react-native-version --amend"
+      "postcommit": "react-native-version --amend"
     }
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "jsc-android": "224109.x.x",
     "mobx": "^4.1.1",
     "mobx-react": "^5.0.0",
     "moment": "^2.22.0",
@@ -28,7 +29,7 @@
     "react-native-vector-icons": "^4.6.0",
     "react-native-version-number": "^0.3.2",
     "react-native-wechat": "^1.9.9",
-    "react-native-xinge-push": "^0.5.1",
+    "react-native-xinge-push": "^0.7.0",
     "react-navigation": "^1.5.9",
     "tslib": "^1.9.0",
     "uuid": "^3.2.1"
