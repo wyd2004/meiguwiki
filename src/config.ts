@@ -3,7 +3,7 @@ import * as colors from './colors'
 
 export const apiBaseUrl = 'http://api.meiguwiki.com/mg/api/v1.0'
 export const webBaseUrl = 'http://meiguwiki.com/'
-export const weChatAppId = 'wxd88c6339438b742a'
+export const weChatAppId = ''
 export const topTabNavigatorConfig: TabNavigatorConfig = {
   tabBarComponent: TabBarTop,
   tabBarPosition: 'top',
@@ -26,11 +26,11 @@ export const topTabNavigatorConfig: TabNavigatorConfig = {
 }
 export const xgPushConfig = {
   ios: {
-    accessId: 2200283597,
-    accessKey: 'IR55FA6V6R8P'
+    accessId: 0000000,
+    accessKey: ''
   },
   android: {
-    accessId: 2100283598,
-    accessKey: 'A1Q76S9F3CPY'
+    accessId: 00000,
+    accessKey: ''
   }
 }
